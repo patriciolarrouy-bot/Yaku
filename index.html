@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#315c43">
+  <meta name="description" content="Yaku - productos naturales. Elegí tus productos y enviá tu pedido por WhatsApp.">
+  <title>Yaku | Productos naturales</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="Yaku, inicio">
+        <img src="logo-yaku.png" alt="Yaku" onerror="this.hidden=true">
+        <span class="brand-fallback">Yaku</span>
+      </a>
+      <p class="brand-tagline">Productos naturales <span>•</span> Salud, energía y bienestar</p>
+      <button class="cart-trigger" id="open-cart" aria-label="Abrir carrito">
+        <span aria-hidden="true">🛒</span><span class="cart-label">Mi pedido</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YAKU · PRODUCTOS NATURALES</span>
+        <h1>Elegí natural.<br><em>Sentite bien.</em></h1>
+        <p>Encontrá tus productos favoritos, armá tu pedido y envialo directamente por WhatsApp.</p>
+        <a class="hero-cta" href="#catalogo">Ver productos <span>↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-circle"></div>
+        <div class="hero-note">Lo mejor de la naturaleza,<br>en cada bocado.</div>
+        <span class="leaf leaf-one">✦</span><span class="leaf leaf-two">✧</span>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><span class="eyebrow">NUESTRO CATÁLOGO</span><h2>Productos para vos</h2></div>
+        <p>Precios expresados en pesos argentinos.</p>
+      </div>
+      <div class="catalog-tools">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar productos..." autocomplete="off"></label>
+        <div class="category-list" id="categories" aria-label="Categorías"></div>
+      </div>
+      <div class="result-line"><span id="result-count"></span><button id="clear-filters" class="clear-button">Limpiar filtros</button></div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>No encontramos productos con esa búsqueda.</div>
+    </section>
+
+    <section class="how-it-works">
+      <span class="eyebrow">FÁCIL Y RÁPIDO</span>
+      <h2>Tu pedido, en tres pasos</h2>
+      <div class="steps">
+        <div><b>01</b><strong>Elegí</strong><p>Explorá el catálogo y seleccioná los productos.</p></div>
+        <div><b>02</b><strong>Armá tu carrito</strong><p>Definí cantidades y presentaciones.</p></div>
+        <div><b>03</b><strong>Enviá por WhatsApp</strong><p>Recibimos tu pedido y coordinamos la compra.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">Yaku</div><p>Productos naturales · Salud · Energía · Bienestar</p><small>Los precios y la disponibilidad pueden estar sujetos a confirmación.</small></footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">TU SELECCIÓN</span><h2>Mi pedido</h2></div><button id="close-cart" class="icon-button" aria-label="Cerrar carrito">✕</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span>🧺</span><strong>Tu carrito está vacío</strong><p>Sumá productos del catálogo para empezar tu pedido.</p><button id="back-to-shop" class="secondary-button">Ver productos</button></div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="cart-total"><span>Total estimado</span><strong id="cart-total">$ 0</strong></div>
+      <p class="total-note">El total es estimado y se confirma al coordinar el pedido.</p>
+      <label class="customer-label" for="customer-name">Tu nombre (opcional)</label>
+      <input id="customer-name" class="customer-input" placeholder="¿Cómo te llamás?">
+      <label class="customer-label" for="order-note">Comentarios (opcional)</label>
+      <textarea id="order-note" class="customer-input" rows="2" placeholder="Por ejemplo: horario de entrega..."></textarea>
+      <button id="send-whatsapp" class="whatsapp-button"><span>↗</span> Enviar pedido por WhatsApp</button>
+      <button id="empty-cart" class="text-button">Vaciar carrito</button>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
