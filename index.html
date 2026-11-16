@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YAKU - Productos Naturales</title>
+    <title>YAKU - Productos Naturales y Dietética</title>
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,6 +46,7 @@
             <button class="filter-btn" data-category="Harinas">Harinas</button>
             <button class="filter-btn" data-category="Mixes">Mixes</button>
             <button class="filter-btn" data-category="Suplementos">Suplementos</button>
+            <button class="filter-btn" data-category="Porotos-y-legumbres">Legumbres</button>
             <button class="filter-btn" data-category="Otros">Otros</button>
         </div>
 
@@ -55,7 +56,7 @@
         </div>
     </main>
 
-    <!-- Carrito de Compras Lateral / Modal -->
+    <!-- Carrito de Compras / Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <div class="cart-header">
@@ -63,7 +64,6 @@
                 <button class="close-cart" id="closeCartBtn">&times;</button>
             </div>
             <div class="cart-items" id="cartItemsContainer">
-                <!-- Items del carrito -->
                 <p class="empty-cart-msg">Tu carrito está vacío</p>
             </div>
             <div class="cart-footer">
@@ -93,95 +93,349 @@
 
     <!-- Script de la Aplicación -->
     <script>
-        // Base de datos de productos adaptada al repositorio local y planilla oficial
+        // Base de datos sincronizada exactamente con los nombres de archivos del repositorio y la planilla
         const productos = [
-            { id: 1, nombre: "Aceite de almendras", categoria: "Otros", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "aceite-de-almendras.jpg" },
-            { id: 2, nombre: "Aceite de cannabis 30ml", categoria: "Otros", p1kg: 15500, p500: 0, p250: 0, unidadLabel: "Frasco 30ml", imagen: "aceite-de-cannabis-30ml.jpg" },
-            { id: 3, nombre: "Aceite de coco 360cc", categoria: "Otros", p1kg: 16700, p500: 0, p250: 0, unidadLabel: "Frasco 360cc", imagen: "aceite-de-coco-360cc-Coconut.jpeg" },
-            { id: 4, nombre: "Aceite de oliva 500cc", categoria: "Otros", p1kg: 10900, p500: 0, p250: 0, unidadLabel: "Botella 500cc", imagen: "aceite-de-oliva-500cc.jpg" },
-            { id: 5, nombre: "Aceite de orégano 30cc", categoria: "Otros", p1kg: 11600, p500: 0, p250: 0, unidadLabel: "Frasco 30cc", imagen: "aceite-de-oregano-30cc.JPG" },
-            { id: 6, nombre: "Ají molido puro", categoria: "Condimentos", p1kg: 15500, p500: 9000, p250: 5200, imagen: "ají-molido-puro.jpg" },
-            { id: 7, nombre: "Ajo en polvo", categoria: "Condimentos", p1kg: 14700, p500: 8500, p250: 4900, imagen: "ajo-en-polvo.jpg" },
-            { id: 8, nombre: "Albahaca", categoria: "Condimentos", p1kg: 19800, p500: 11500, p250: 6700, imagen: "albahaca.jpg" },
-            { id: 9, nombre: "Almendras con chocolate", categoria: "Otros", p1kg: 46300, p500: 26900, p250: 15600, imagen: "almendras-con-chocolate.JPG" },
-            { id: 10, nombre: "Almendras premium", categoria: "Frutos-Secos", p1kg: 38700, p500: 22400, p250: 13000, imagen: "almendras-premium.JPG" },
-            { id: 11, nombre: "Almohaditas surtidas", categoria: "Cereales", p1kg: 13100, p500: 7600, p250: 4400, imagen: "almohaditas-de-chocolate.JPG" },
-            { id: 12, nombre: "Anís en grano", categoria: "Condimentos", p1kg: 25200, p500: 14600, p250: 8500, imagen: "anis-en-grano.jpg" },
-            { id: 13, nombre: "Arroz basmati", categoria: "Otros", p1kg: 11500, p500: 6700, p250: 3900, imagen: "arroz-basmati.jpg", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
-            { id: 14, nombre: "Arroz integral", categoria: "Otros", p1kg: 2900, p500: 1700, p250: 1000, imagen: "arroz-integral.jpg", fallbackImg: "https://images.unsplash.com/photo-1536304993881-ff6e9effa2a6?w=400" },
-            { id: 15, nombre: "Arroz yamaní", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "arroz-yamani.jpg", fallbackImg: "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400" },
-            { id: 16, nombre: "Arveja partida", categoria: "Otros", p1kg: 2800, p500: 1600, p250: 900, imagen: "arveja-partida.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
-            { id: 17, nombre: "Avellanas", categoria: "Frutos-Secos", p1kg: 44000, p500: 25500, p250: 14800, imagen: "avellanas.jpg" },
-            { id: 18, nombre: "Azúcar mascabo", categoria: "Otros", p1kg: 7900, p500: 4600, p250: 2700, imagen: "azúcar-mascabowebp" },
-            { id: 19, nombre: "Baño repostería semiamargo", categoria: "Otros", p1kg: 10100, p500: 0, p250: 0, unidadLabel: "Tableta 500g", imagen: "bano-reposteria.jpg", fallbackImg: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
-            { id: 20, nombre: "Bicarbonato", categoria: "Otros", p1kg: 3500, p500: 2000, p250: 1200, imagen: "bicarbonato.jpg", fallbackImg: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=400" },
-            { id: 21, nombre: "Bolitas de chocolate", categoria: "Cereales", p1kg: 12000, p500: 7000, p250: 4100, imagen: "bolitas-de-chocolate.jpg" },
-            { id: 22, nombre: "Canela en polvo", categoria: "Condimentos", p1kg: 18200, p500: 10600, p250: 6100, imagen: "canela-en-polvo.jpg" },
-            { id: 23, nombre: "Cartílago de tiburón", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Etiqueta", imagen: "cartilago-de-tiburon-etiqueta.jpg" },
-            { id: 24, nombre: "Castañas cajú saladas", categoria: "Frutos-Secos", p1kg: 25100, p500: 14600, p250: 8500, imagen: "castañas-cajú-saladas-y-tostadas.jpg" },
-            { id: 25, nombre: "Castañas Para", categoria: "Frutos-Secos", p1kg: 38000, p500: 22000, p250: 12800, imagen: "castañas-Para.jpeg" },
-            { id: 26, nombre: "Cebolla deshidratada", categoria: "Condimentos", p1kg: 23100, p500: 13400, p250: 7800, imagen: "cebolla-deshidratada.jpg" },
-            { id: 27, nombre: "Chimichurri", categoria: "Condimentos", p1kg: 8400, p500: 4900, p250: 2800, imagen: "chimichurri.jpg" },
-            { id: 28, nombre: "Chips banana", categoria: "Otros", p1kg: 20100, p500: 11700, p250: 6800, imagen: "chips-banana.jpeg" },
-            { id: 29, nombre: "Chips de chocolate", categoria: "Otros", p1kg: 14000, p500: 8100, p250: 4700, imagen: "chips-de-Chocolate.webp" },
-            { id: 30, nombre: "Ciruelas", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "ciruelas.jpeg" },
-            { id: 31, nombre: "Clavo de olor", categoria: "Condimentos", p1kg: 9900, p500: 5700, p250: 3300, imagen: "clavo-de-olor.jpg" },
-            { id: 32, nombre: "Colágeno", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "colageno.jpg" },
-            { id: 33, nombre: "Curry", categoria: "Condimentos", p1kg: 11200, p500: 6500, p250: 3800, imagen: "curry.jpg" },
-            { id: 34, nombre: "Dátiles argelia", categoria: "Otros", p1kg: 9500, p500: 5500, p250: 3200, imagen: "dátiles-argeliaJPG" },
-            { id: 35, nombre: "Esencia de vainilla", categoria: "Otros", p1kg: 2900, p500: 0, p250: 0, unidadLabel: "100cc", imagen: "esencia-vainilla.jpg", fallbackImg: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" },
-            { id: 36, nombre: "Espirulina con maca", categoria: "Suplementos", p1kg: 1200, p500: 0, p250: 0, unidadLabel: "100g", imagen: "espirulina.jpg" },
-            { id: 37, nombre: "Fibra", categoria: "Cereales", p1kg: 11400, p500: 6600, p250: 3800, imagen: "fibra.jpg" },
-            { id: 38, nombre: "Flor de jamaica / hibiscus", categoria: "Otros", p1kg: 24400, p500: 14200, p250: 8200, imagen: "flor-jamaica.jpg", fallbackImg: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400" },
-            { id: 39, nombre: "Fruta escurrida pan dulce", categoria: "Otros", p1kg: 8400, p500: 4900, p250: 2800, imagen: "fruta-escurrida.jpg", fallbackImg: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400" },
-            { id: 40, nombre: "Gelatina sin sabor", categoria: "Otros", p1kg: 32700, p500: 19000, p250: 11000, imagen: "gelatina.jpg", fallbackImg: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=400" },
-            { id: 41, nombre: "Girasol peladas", categoria: "Semillas", p1kg: 6100, p500: 3500, p250: 2000, imagen: "girasol.jpeg" },
-            { id: 42, nombre: "Granola premium", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-premium.png" },
-            { id: 43, nombre: "Granola tradicional", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-tradicional.jpg" },
-            { id: 44, nombre: "Graviola etiqueta", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "graviola-etiqueta.png" },
-            { id: 45, nombre: "Harina de algarroba negra", categoria: "Harinas", p1kg: 10400, p500: 6000, p250: 3500, imagen: "harina-de-algarroba.jpg", fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
-            { id: 46, nombre: "Harina de almendra 100%", categoria: "Harinas", p1kg: 44400, p500: 25800, p250: 15000, imagen: "harina-de-almendra.jpg" },
-            { id: 47, nombre: "Harina de arroz", categoria: "Harinas", p1kg: 2300, p500: 1300, p250: 800, imagen: "harina-de-arroz.jpg", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
-            { id: 48, nombre: "Harina de avena", categoria: "Harinas", p1kg: 3500, p500: 2000, p250: 1200, imagen: "harina-de-avena.jpg", fallbackImg: "https://images.unsplash.com/photo-1584776296944-ab6fb57a0abd?w=400" },
-            { id: 49, nombre: "Harina de coco", categoria: "Harinas", p1kg: 9600, p500: 5600, p250: 3200, imagen: "harina-de-coco.jpg", fallbackImg: "https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400" },
-            { id: 50, nombre: "Harina de garbanzo", categoria: "Harinas", p1kg: 2600, p500: 1500, p250: 900, imagen: "harina-de-garbanzo.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
-            { id: 51, nombre: "Harina de soja", categoria: "Harinas", p1kg: 2500, p500: 1500, p250: 900, imagen: "harina-de-soja.jpg" },
-            { id: 52, nombre: "Harina integral fina", categoria: "Harinas", p1kg: 2100, p500: 1200, p250: 700, imagen: "harina-integral.jpg", fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
-            { id: 53, nombre: "Jengibre en polvo", categoria: "Condimentos", p1kg: 15600, p500: 9000, p250: 5200, imagen: "jengibre.jpg", fallbackImg: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400" },
-            { id: 54, nombre: "Leche de almendras Biba", categoria: "Almendras", p1kg: 5300, p500: 0, p250: 0, unidadLabel: "Litro", imagen: "leche-almendras.jpg", fallbackImg: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400" },
-            { id: 55, nombre: "Lenteja", categoria: "Porotos-y-legumbres", p1kg: 3500, p500: 2000, p250: 1200, imagen: "lentejas.jpg" },
-            { id: 56, nombre: "Lentejas de chocolate", categoria: "Otros", p1kg: 22400, p500: 13000, p250: 7500, imagen: "lentejas-de-chocolate.jpg", fallbackImg: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400" },
-            { id: 57, nombre: "Lenteja turca", categoria: "Porotos-y-legumbres", p1kg: 10400, p500: 6000, p250: 3500, imagen: "lenteja-turca.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
-            { id: 58, nombre: "Lino", categoria: "Semillas", p1kg: 5400, p500: 3100, p250: 1800, imagen: "lino.JPG" },
-            { id: 59, nombre: "Lino dorado", categoria: "Semillas", p1kg: 8900, p500: 5200, p250: 3000, imagen: "lino-dorado.jpg", fallbackImg: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
-            { id: 60, nombre: "Maní con chocolate", categoria: "Otros", p1kg: 24600, p500: 14300, p250: 8300, imagen: "maní-con-chocolate.png" },
-            { id: 61, nombre: "Maní con sal", categoria: "Frutos-Secos", p1kg: 4800, p500: 2800, p250: 1600, imagen: "maní-con-sal.webp" },
-            { id: 62, nombre: "Maní en vaina", categoria: "Frutos-Secos", p1kg: 6100, p500: 3500, p250: 2000, imagen: "mani-en-vainajpe" },
-            { id: 63, nombre: "Maní sin sal", categoria: "Frutos-Secos", p1kg: 5300, p500: 3100, p250: 1800, imagen: "mani-sin-sal.jpeg" },
-            { id: 64, nombre: "Mix cervecero", categoria: "Mixes", p1kg: 10000, p500: 5800, p250: 3400, imagen: "mix-cervecero.jpg" },
-            { id: 65, nombre: "Mix clásico", categoria: "Mixes", p1kg: 19900, p500: 11500, p250: 6700, imagen: "mix-clásico.jpg" },
-            { id: 66, nombre: "Mix de cereales", categoria: "Cereales", p1kg: 9300, p500: 5400, p250: 3100, imagen: "mix-de-cereales.jpg" },
-            { id: 67, nombre: "Mix de semillas", categoria: "Semillas", p1kg: 6400, p500: 3700, p250: 2100, imagen: "mix-de-semillas.jpg" },
-            { id: 68, nombre: "Mix económico", categoria: "Mixes", p1kg: 11900, p500: 6900, p250: 4000, imagen: "mix-económico.jpg" },
-            { id: 69, nombre: "Mix patagónico", categoria: "Mixes", p1kg: 28200, p500: 16400, p250: 9500, imagen: "mix-patagónico.jpg" },
-            { id: 70, nombre: "Mix premium", categoria: "Mixes", p1kg: 35700, p500: 20700, p250: 12000, imagen: "mix-premium.jpg" },
-            { id: 71, nombre: "Mix seco", categoria: "Mixes", p1kg: 24200, p500: 14000, p250: 8100, imagen: "mix-seco.jpg" },
-            { id: 72, nombre: "Mix tropical", categoria: "Mixes", p1kg: 18600, p500: 10800, p250: 6300, imagen: "mix-tropical.jpg" },
-            { id: 73, nombre: "Moringa", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "moringa.png" },
-            { id: 74, nombre: "Nueces mariposa", categoria: "Frutos-Secos", p1kg: 23700, p500: 13700, p250: 7900, imagen: "nueces-mariposa.jpg" },
-            { id: 75, nombre: "Nuevo mix pan dulce", categoria: "Otros", p1kg: 21500, p500: 12500, p250: 7300, imagen: "nuevo-mix-pan-dulce.jpeg" },
-            { id: 76, nombre: "Nuez con cáscara", categoria: "Otros", p1kg: 10000, p500: 5800, p250: 3400, imagen: "nuez-con-cáscara.jpeg" },
-            { id: 77, nombre: "Orégano", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "orégano.jpg" },
-            { id: 78, nombre: "Pasas de uva flame y jumbo", categoria: "Otros", p1kg: 7100, p500: 4100, p250: 2400, imagen: "pasas-de-uva-flame-y-jumbo.jpg" },
-            { id: 79, nombre: "Pasas rubias", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "pasas-rubias.jpg" },
-            { id: 80, nombre: "Pasta de maní c/stevia", categoria: "Maní", p1kg: 5000, p500: 0, p250: 0, unidadLabel: "Frasco 370g", imagen: "pasta-de-mani.jpg", fallbackImg: "https://images.unsplash.com/photo-1589734553451-f6e3c044234c?w=400" },
-            { id: 81, nombre: "Pimentón", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "pimentón.jpg" },
-            { id: 82, nombre: "Pimienta blanca en grano", categoria: "Condimentos", p1kg: 59400, p500: 34500, p250: 20000, imagen: "pimienta-blanca-en-grano.jpg" },
-            { id: 83, nombre: "Pimienta blanca molida", categoria: "Condimentos", p1kg: 19100, p500: 11100, p250: 6400, imagen: "pimienta-blanca-molida.jpg" },
-            { id: 84, nombre: "Pimienta negra molida", categoria: "Condimentos", p1kg: 12900, p500: 7500, p250: 4400, imagen: "pimienta-negra-molida.jpg" },
-            { id: 85, nombre: "Pistacchio pelado natural", categoria: "Frutos-Secos", p1kg: 10900, p500: 6300, p250: 3700, imagen: "pistacho-pelado-natural.jpe" },
-            { id: 86, nombre: "Provenzal", categoria: "Condimentos", p1kg: 10600, p500: 6100, p250: 3500, imagen: "provenzal.jpg" },
-            { id: 87, nombre: "Quinoa", categoria: "Semillas", p1kg: 16400, p500: 9500, p250: 5500, imagen: "quinoa-inflada.JPG", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
-            { id: 88, nombre: "Quinoa inflada", categoria: "Cereales", p1kg: 9800, p500: 5700, p250: 3300, imagen: "quinoa-inflada.JPG" },
-            { id: 89, nombre: "Sal marina fina", categoria: "Otros", p1kg: 4000, p500: 0, p250: 0, unidadLabel: "Paquete 500g", imagen: "sal-marina.jpg", fallbackImg: "https://images.unsplash.com/photo-1518110905587-dc5f9f34fb32?w=400" },
-            { id: 90, nombre: "Sal rosa del himalaya", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "sal-rosa.jpg",
+            { id: 1, nombre: "Aceite de almendras", categoria: "Otros", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "aceite-de-almendras.jpg", fallback: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400" },
+            { id: 2, nombre: "Aceite de cannabis 30ml", categoria: "Otros", p1kg: 15500, p500: 0, p250: 0, unidadLabel: "Frasco 30ml", imagen: "aceite-de-cannabis-30ml.jpg", fallback: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" },
+            { id: 3, nombre: "Aceite de coco 360cc", categoria: "Otros", p1kg: 16700, p500: 0, p250: 0, unidadLabel: "Frasco 360cc", imagen: "aceite-de-coco-360cc-Coconut.jpeg", fallback: "https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400" },
+            { id: 4, nombre: "Aceite de oliva 500cc", categoria: "Otros", p1kg: 10900, p500: 0, p250: 0, unidadLabel: "Botella 500cc", imagen: "aceite-de-oliva-500cc.jpg", fallback: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400" },
+            { id: 5, nombre: "Aceite de orégano 30cc", categoria: "Otros", p1kg: 11600, p500: 0, p250: 0, unidadLabel: "Frasco 30cc", imagen: "aceite-de-oregano-30cc.JPG", fallback: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" },
+            { id: 6, nombre: "Ají molido puro", categoria: "Condimentos", p1kg: 15500, p500: 9000, p250: 5200, imagen: "ají-molido-puro.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 7, nombre: "Ajo en polvo", categoria: "Condimentos", p1kg: 14700, p500: 8500, p250: 4900, imagen: "ajo-en-polvo.jpg", fallback: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" },
+            { id: 8, nombre: "Albahaca", categoria: "Condimentos", p1kg: 19800, p500: 11500, p250: 6700, imagen: "albahaca.jpg", fallback: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=400" },
+            { id: 9, nombre: "Almendras con chocolate", categoria: "Otros", p1kg: 46300, p500: 26900, p250: 15600, imagen: "almendras-con-chocolate.JPG", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 10, nombre: "Almendras premium", categoria: "Frutos-Secos", p1kg: 38700, p500: 22400, p250: 13000, imagen: "almendras-premium.JPG", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 11, nombre: "Almohaditas surtidas", categoria: "Cereales", p1kg: 13100, p500: 7600, p250: 4400, imagen: "almohaditas-surtidas-incluye-todas.JPG", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 12, nombre: "Anís en grano", categoria: "Condimentos", p1kg: 25200, p500: 14600, p250: 8500, imagen: "anis-en-grano .jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 13, nombre: "Arroz basmati", categoria: "Otros", p1kg: 11500, p500: 6700, p250: 3900, imagen: "arroz-basmati.jpg", fallback: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 14, nombre: "Arroz integral", categoria: "Otros", p1kg: 2900, p500: 1700, p250: 1000, imagen: "arroz-integral.jpg", fallback: "https://images.unsplash.com/photo-1536304993881-ff6e9effa2a6?w=400" },
+            { id: 15, nombre: "Arroz yamaní", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "arroz-yamaní.jpg", fallback: "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400" },
+            { id: 16, nombre: "Arveja partida", categoria: "Otros", p1kg: 2800, p500: 1600, p250: 900, imagen: "arveja-partida.jpg", fallback: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 17, nombre: "Avellanas", categoria: "Frutos-Secos", p1kg: 44000, p500: 25500, p250: 14800, imagen: "avellanas.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 18, nombre: "Azúcar mascabo", categoria: "Otros", p1kg: 7900, p500: 4600, p250: 2700, imagen: "azúcar-mascabowebp", fallback: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400" },
+            { id: 19, nombre: "Baño repostería con leche", categoria: "Otros", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "baño-de-reposteria-tableta-alpino-x500g-con-leche.jpg", fallback: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
+            { id: 20, nombre: "Baño repostería semiamargo", categoria: "Otros", p1kg: 10100, p500: 0, p250: 0, unidadLabel: "Tableta 500g", imagen: "baño-de-reposteria-tableta-alpino-x500g-semiamargo.jpg", fallback: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
+            { id: 21, nombre: "Bicarbonato", categoria: "Otros", p1kg: 3500, p500: 2000, p250: 1200, imagen: "bicarbonato.jpg", fallback: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=400" },
+            { id: 22, nombre: "Bolitas de chocolate", categoria: "Cereales", p1kg: 12000, p500: 7000, p250: 4100, imagen: "bolitas-de-chocolate.jpg", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 23, nombre: "Canela en polvo", categoria: "Condimentos", p1kg: 18200, p500: 10600, p250: 6100, imagen: "canela-en-polvo.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 24, nombre: "Cartílago de tiburón", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Etiqueta", imagen: "cartilago-de-tiburon-etiqueta.jpg", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 25, nombre: "Castañas cajú saladas", categoria: "Frutos-Secos", p1kg: 25100, p500: 14600, p250: 8500, imagen: "castañas-cajú-saladas-y-tostadas.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 26, nombre: "Castañas para", categoria: "Frutos-Secos", p1kg: 38000, p500: 22000, p250: 12800, imagen: "castañas-Para.jpeg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 27, nombre: "Cebolla deshidratada", categoria: "Condimentos", p1kg: 23100, p500: 13400, p250: 7800, imagen: "cebolla-deshidratada.jpg", fallback: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" },
+            { id: 28, nombre: "Chimichurri", categoria: "Condimentos", p1kg: 8400, p500: 4900, p250: 2800, imagen: "chimichurri.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 29, nombre: "Chips banana", categoria: "Otros", p1kg: 20100, p500: 11700, p250: 6800, imagen: "chips-banana.jpg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 30, nombre: "Chips de chocolate", categoria: "Otros", p1kg: 14000, p500: 8100, p250: 4700, imagen: "chips-de-Chocolate.webp", fallback: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
+            { id: 31, nombre: "Ciruelas", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "ciruelas .jpeg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 32, nombre: "Clavo de olor", categoria: "Condimentos", p1kg: 9900, p500: 5700, p250: 3300, imagen: "clavo-de-olor.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 33, nombre: "Colágeno", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "colageno.jpg", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 34, nombre: "Curry", categoria: "Condimentos", p1kg: 11200, p500: 6500, p250: 3800, imagen: "curry.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 35, nombre: "Dátiles argelia", categoria: "Otros", p1kg: 9500, p500: 5500, p250: 3200, imagen: "dátiles-argeliaJPG", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 36, nombre: "Esencia de vainilla", categoria: "Otros", p1kg: 2900, p500: 0, p250: 0, unidadLabel: "100cc", imagen: "esencia-de-vainilla.jpg", fallback: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" },
+            { id: 37, nombre: "Espirulina con maca", categoria: "Suplementos", p1kg: 1200, p500: 0, p250: 0, unidadLabel: "100g", imagen: "espirulina.jpg", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 38, nombre: "Fibra", categoria: "Cereales", p1kg: 11400, p500: 6600, p250: 3800, imagen: "fibra.jpg", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 39, nombre: "Flor de jamaica / hibiscus", categoria: "Otros", p1kg: 24400, p500: 14200, p250: 8200, imagen: "flor-de-jamaica.jpg", fallback: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400" },
+            { id: 40, nombre: "Fruta escurrida para pan dulce", categoria: "Otros", p1kg: 8400, p500: 4900, p250: 2800, imagen: "fruta-escurrida-para-pan-dulce.jpg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 41, nombre: "Gelatina sin sabor", categoria: "Otros", p1kg: 32700, p500: 19000, p250: 11000, imagen: "gelatina-sin-sabor.jpg", fallback: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=400" },
+            { id: 42, nombre: "Girasol peladas", categoria: "Semillas", p1kg: 6100, p500: 3500, p250: 2000, imagen: "girasol.jpeg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 43, nombre: "Granola premium", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-premium.png", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 44, nombre: "Granola tradicional", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-tradicional.jpg", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 45, nombre: "Graviola etiqueta", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "graviola-etiqueta.png", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 46, nombre: "Harina de algarroba negra", categoria: "Harinas", p1kg: 10400, p500: 6000, p250: 3500, imagen: "harina-de-algarroba-negra.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 47, nombre: "Harina de almendra 100%", categoria: "Harinas", p1kg: 44400, p500: 25800, p250: 15000, imagen: "harina-de-almendra-sin-piel-100-de-pureza.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 48, nombre: "Harina de almendra 70%", categoria: "Harinas", p1kg: 7300, p500: 4200, p250: 2400, imagen: "harina-de-almendra-sin-piel-70-de-pureza.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 49, nombre: "Harina de arroz", categoria: "Harinas", p1kg: 2300, p500: 1300, p250: 800, imagen: "harina-de-arroz.jpg", fallback: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 50, nombre: "Harina de avena", categoria: "Harinas", p1kg: 3500, p500: 2000, p250: 1200, imagen: "harina-de-avena.jpg", fallback: "https://images.unsplash.com/photo-1584776296944-ab6fb57a0abd?w=400" },
+            { id: 51, nombre: "Harina de centeno", categoria: "Harinas", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "harina-de-centeno.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 52, nombre: "Harina de coca", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "harina-de-coca.jpg", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 53, nombre: "Harina de coco", categoria: "Harinas", p1kg: 9600, p500: 5600, p250: 3200, imagen: "harina-de-coco.jpg", fallback: "https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400" },
+            { id: 54, nombre: "Harina de garbanzo", categoria: "Harinas", p1kg: 2600, p500: 1500, p250: 900, imagen: "harina-de-garbanzo.jpg", fallback: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 55, nombre: "Harina de soja", categoria: "Harinas", p1kg: 2500, p500: 1500, p250: 900, imagen: "harina-de-soja.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 56, nombre: "Harina integral fina", categoria: "Harinas", p1kg: 2100, p500: 1200, p250: 700, imagen: "harina-integral-fina.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 57, nombre: "Higos negros", categoria: "Otros-Frutos-secos", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "higos-negros.jpg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 58, nombre: "Hongos bolletus", categoria: "Otros", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "hongos-bolletus.jpg", fallback: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400" },
+            { id: 59, nombre: "Jengibre en polvo", categoria: "Condimentos", p1kg: 15600, p500: 9000, p250: 5200, imagen: "jengibre-en-polvo.jpg", fallback: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400" },
+            { id: 60, nombre: "Leche de almendras Biba", categoria: "Otros", p1kg: 5300, p500: 0, p250: 0, unidadLabel: "Litro", imagen: "leche-de-almendras-biba-1lt-sin-tacc.jpg", fallback: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400" },
+            { id: 61, nombre: "Lenteja", categoria: "Porotos-y-legumbres", p1kg: 3500, p500: 2000, p250: 1200, imagen: "lenteja.jpg", fallback: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 62, nombre: "Lentejas de chocolate", categoria: "Otros", p1kg: 22400, p500: 13000, p250: 7500, imagen: "lentejas-de-chocolate-tipo-rocklets.jpg", fallback: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400" },
+            { id: 63, nombre: "Lenteja turca", categoria: "Porotos-y-legumbres", p1kg: 10400, p500: 6000, p250: 3500, imagen: "lenteja-turca.jpg", fallback: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 64, nombre: "Lino", categoria: "Semillas", p1kg: 5400, p500: 3100, p250: 1800, imagen: "lino.JPG", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 65, nombre: "Lino dorado", categoria: "Semillas", p1kg: 8900, p500: 5200, p250: 3000, imagen: "lino-dorado.jpg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 66, nombre: "Maní con chocolate", categoria: "Otros", p1kg: 24600, p500: 14300, p250: 8300, imagen: "maní-con-chocolate.JPG", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 67, nombre: "Maní con sal", categoria: "Frutos-Secos", p1kg: 4800, p500: 2800, p250: 1600, imagen: "maní-con-sal.webp", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 68, nombre: "Maní en vaina", categoria: "Frutos-Secos", p1kg: 6100, p500: 3500, p250: 2000, imagen: "mani-en-vainajpe", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 69, nombre: "Maní sin sal", categoria: "Frutos-Secos", p1kg: 5300, p500: 3100, p250: 1800, imagen: "mani-sin-sal.jpeg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 70, nombre: "Mix cervecero", categoria: "Mixes", p1kg: 10000, p500: 5800, p250: 3400, imagen: "mix-cervecero-maíz-frito-maní-salado-girasol-zapallo-mani-chino.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 71, nombre: "Mix clásico", categoria: "Mixes", p1kg: 19900, p500: 11500, p250: 6700, imagen: "mix-clásico-nueces-almendras-castañas-mani-y-pasas-de-uva.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 72, nombre: "Mix de cereales", categoria: "Cereales", p1kg: 9300, p500: 5400, p250: 3100, imagen: "mix-de-cereales.jpg", fallback: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400" },
+            { id: 73, nombre: "Mix de semillas", categoria: "Semillas", p1kg: 6400, p500: 3700, p250: 2100, imagen: "mix-de-semillas.jpg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 74, nombre: "Mix económico", categoria: "Mixes", p1kg: 11900, p500: 6900, p250: 4000, imagen: "mix-económico-pasas-mani-nueces-y-almendras.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 75, nombre: "Mix patagónico", categoria: "Mixes", p1kg: 28200, p500: 16400, p250: 9500, imagen: "mix-patagónico-nueces-almendras-castañas-y-arándanos.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 76, nombre: "Mix premium", categoria: "Mixes", p1kg: 35700, p500: 20700, p250: 12000, imagen: "mix-premium-nueces-almendras-castañas-y-avellanas.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 77, nombre: "Mix seco", categoria: "Mixes", p1kg: 24200, p500: 14000, p250: 8100, imagen: "mix-seco.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 78, nombre: "Mix tropical", categoria: "Mixes", p1kg: 18600, p500: 10800, p250: 6300, imagen: "mix-tropical-nueces-almendras-banana-maní-y-pasas-de-uva.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 79, nombre: "Moringa", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "moringa.png", fallback: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400" },
+            { id: 80, nombre: "Nueces mariposa", categoria: "Frutos-Secos", p1kg: 23700, p500: 13700, p250: 7900, imagen: "nueces-mariposa.jpg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 81, nombre: "Nuevo mix pan dulce", categoria: "Otros", p1kg: 21500, p500: 12500, p250: 7300, imagen: "nuevo-mix-pan-dulce-fruta-escurrida-frutos-secos-pasas-de-uva.jpeg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 82, nombre: "Nuez con cáscara", categoria: "Otros", p1kg: 10000, p500: 5800, p250: 3400, imagen: "nuez-con-cáscara.jpeg", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 83, nombre: "Orégano", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "orégano.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 84, nombre: "Pasas de uva flame y jumbo", categoria: "Otros", p1kg: 7100, p500: 4100, p250: 2400, imagen: "pasas-de-uva-flame-y-jumbo.jpg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 85, nombre: "Pasas rubias", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "pasas-rubias.jpg", fallback: "https://images.unsplash.com/photo-1526318896980-cf7b9d8b75f3?w=400" },
+            { id: 86, nombre: "Pasta de maní c/stevia", categoria: "Maní", p1kg: 5000, p500: 0, p250: 0, unidadLabel: "Frasco 370g", imagen: "pasta-de-maní-c-stevia-entrenuts-frasco-370g-sin-tacc.jpg", fallback: "https://images.unsplash.com/photo-1589734553451-f6e3c044234c?w=400" },
+            { id: 87, nombre: "Pimentón", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "pimentón.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 88, nombre: "Pimienta blanca en grano", categoria: "Condimentos", p1kg: 59400, p500: 34500, p250: 20000, imagen: "pimienta-blanca-en-grano.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 89, nombre: "Pimienta blanca molida", categoria: "Condimentos", p1kg: 19100, p500: 11100, p250: 6400, imagen: "pimienta-blanca-molida.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 90, nombre: "Pimienta negra molida", categoria: "Condimentos", p1kg: 12900, p500: 7500, p250: 4400, imagen: "pimienta-negra-molida.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 91, nombre: "Pistacchio pelado natural", categoria: "Frutos-Secos", p1kg: 10900, p500: 6300, p250: 3700, imagen: "pistacho-pelado-natural.jpe", fallback: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+            { id: 92, nombre: "Provenzal", categoria: "Condimentos", p1kg: 10600, p500: 6100, p250: 3500, imagen: "provenzal.jpg", fallback: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" },
+            { id: 93, nombre: "Quinoa", categoria: "Semillas", p1kg: 16400, p500: 9500, p250: 5500, imagen: "quinoa.jpg", fallback: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 94, nombre: "Quinoa inflada", categoria: "Cereales", p1kg: 9800, p500: 5700, p250: 3300, imagen: "quinoa-inflada.JPG", fallback: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 95, nombre: "Sal marina fina", categoria: "Otros", p1kg: 4000, p500: 0, p250: 0, unidadLabel: "Paquete 500g", imagen: "sal-marina-fina-macrozen-paquete-500g-sin-tacc.jpg", fallback: "https://images.unsplash.com/photo-1518110905587-dc5f9f34fb32?w=400" },
+            { id: 96, nombre: "Sal rosa del himalaya", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "sal-rosa-del-himalaya.jpg", fallback: "https://images.unsplash.com/photo-1518110905587-dc5f9f34fb32?w=400" },
+            { id: 97, nombre: "Salvado de avena", categoria: "Otros", p1kg: 4100, p500: 2400, p250: 1400, imagen: "salvado-de-avena.jpg", fallback: "https://images.unsplash.com/photo-1584776296944-ab6fb57a0abd?w=400" },
+            { id: 98, nombre: "Semolín", categoria: "Harinas", p1kg: 4400, p500: 2600, p250: 1500, imagen: "semolin.jpg", fallback: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 99, nombre: "Sésamo blanco", categoria: "Semillas", p1kg: 12000, p500: 7000, p250: 4100, imagen: "sésamo-blanco.JPG", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 100, nombre: "Sésamo integral", categoria: "Semillas", p1kg: 3800, p500: 2200, p250: 1300, imagen: "sésamo-integral.jpg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 101, nombre: "Sésamo negro", categoria: "Semillas", p1kg: 25000, p500: 14500, p250: 8400, imagen: "sésamo-negro.jpeg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 102, nombre: "Soja texturizada", categoria: "Porotos-y-legumbres", p1kg: 4400, p500: 2600, p250: 1500, imagen: "soja-texturizada.PG", fallback: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 103, nombre: "Tomates secos", categoria: "Otros", p1kg: 22400, p500: 13000, p250: 7500, imagen: "tomates-secos.jpe", fallback: "https://images.unsplash.com/photo-1592417817098-8f3d691a4bf5?w=400" },
+            { id: 104, nombre: "Tutucas", categoria: "Otros", p1kg: 7800, p500: 4500, p250: 2600, imagen: "tutucas.jpg", fallback: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400" },
+            { id: 105, nombre: "Zapallo", categoria: "Semillas", p1kg: 18700, p500: 10800, p250: 6300, imagen: "zapallo.jpg", fallback: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" }
+        ];
+
+        let cart = [];
+
+        const productsGrid = document.getElementById('productsGrid');
+        const categoryFilters = document.getElementById('categoryFilters');
+        const cartToggleBtn = document.getElementById('cartToggleBtn');
+        const cartModal = document.getElementById('cartModal');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const cartCount = document.getElementById('cartCount');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const whatsappCheckoutBtn = document.getElementById('whatsappCheckoutBtn');
+
+        function renderProducts(category = 'todos') {
+            productsGrid.innerHTML = '';
+            
+            const filtered = category === 'todos' 
+                ? productos 
+                : productos.filter(p => p.categoria.toLowerCase() === category.toLowerCase());
+
+            if (filtered.length === 0) {
+                productsGrid.innerHTML = '<p class="no-products">No hay productos en esta categoría.</p>';
+                return;
+            }
+
+            filtered.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                let hasWeights = prod.p1kg > 0;
+                let priceHtml = '';
+                let selectHtml = '';
+
+                if (hasWeights) {
+                    priceHtml = `<span class="product-price" id="price-${prod.id}">$${prod.p1kg.toLocaleString()} <small>(${prod.p1kg > 1500 ? '1 Kg' : 'Unid'})</small></span>`;
+                    selectHtml = `
+                        <div class="weight-selector">
+                            <button class="w-btn active" onclick="changeWeight(${prod.id}, '1kg', this)">${prod.p1kg > 1500 ? '1 Kg' : 'Unid'}</button>
+                            ${prod.p500 > 0 ? `<button class="w-btn" onclick="changeWeight(${prod.id}, '500g', this)">500g</button>` : ''}
+                            ${prod.p250 > 0 ? `<button class="w-btn" onclick="changeWeight(${prod.id}, '250g', this)">250g</button>` : ''}
+                        </div>
+                    `;
+                } else {
+                    priceHtml = `<span class="product-price">${prod.unidadLabel || 'Consultar'}</span>`;
+                    selectHtml = `<div class="weight-selector"><span class="unica-presentacion">${prod.unidadLabel || 'Especial'}</span></div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="product-img-container">
+                        <img src="${prod.imagen}" alt="${prod.nombre}" onerror="this.onerror=null; this.src='${prod.fallback}';">
+                        <span class="product-category-tag">${prod.categoria}</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${prod.nombre}</h3>
+                        <div class="price-container">${priceHtml}</div>
+                        ${selectHtml}
+                        <button class="add-to-cart-btn" onclick="addToCart(${prod.id})">
+                            <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </div>
+                `;
+                productsGrid.appendChild(card);
+            });
+        }
+
+        const selectedWeights = {};
+
+        function changeWeight(prodId, weightType, btnElement) {
+            const product = productos.find(p => p.id === prodId);
+            const priceElement = document.getElementById(`price-${prodId}`);
+            
+            const buttons = btnElement.parentElement.querySelectorAll('.w-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            let price = 0;
+            let label = '';
+            if (weightType === '1kg') {
+                price = product.p1kg;
+                label = product.p1kg > 1500 ? '1 Kg' : 'Unid';
+            } else if (weightType === '500g') {
+                price = product.p500;
+                label = '500g';
+            } else if (weightType === '250g') {
+                price = product.p250;
+                label = '250g';
+            }
+
+            selectedWeights[prodId] = { weight: label, price: price };
+            priceElement.innerHTML = `$${price.toLocaleString()} <small>(${label})</small>`;
+        }
+
+        function addToCart(prodId) {
+            const product = productos.find(p => p.id === prodId);
+            const selection = selectedWeights[prodId] || { 
+                weight: product.p1kg > 0 ? (product.p1kg > 1500 ? '1 Kg' : 'Unid') : (product.unidadLabel || 'Unidad'), 
+                price: product.p1kg > 0 ? product.p1kg : 0 
+            };
+
+            if (selection.price === 0) {
+                alert("Este producto es a consultar o no tiene precio asignado.");
+                return;
+            }
+
+            const cartItemId = `${prodId}-${selection.weight}`;
+            const existingItem = cart.find(item => item.cartItemId === cartItemId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    cartItemId: cartItemId,
+                    id: product.id,
+                    nombre: product.nombre,
+                    weight: selection.weight,
+                    price: selection.price,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            openCart();
+        }
+
+        function updateCartUI() {
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Tu carrito está vacío</p>';
+                cartTotalPrice.textContent = '$0';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `
+                    <div class="cart-item-details">
+                        <h4>${item.nombre}</h4>
+                        <span class="cart-item-weight">Presentación: ${item.weight}</span>
+                        <span class="cart-item-price">$${item.price.toLocaleString()} c/u</span>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button onclick="updateQuantity(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity(${index}, 1)">+</button>
+                        <button class="remove-item" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            cartTotalPrice.textContent = `$${total.toLocaleString()}`;
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function openCart() {
+            cartModal.classList.add('open');
+            cartOverlay.classList.add('open');
+        }
+
+        function closeCart() {
+            cartModal.classList.remove('open');
+            cartOverlay.classList.remove('open');
+        }
+
+        cartToggleBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        categoryFilters.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const buttons = categoryFilters.querySelectorAll('button');
+                buttons.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderProducts(e.target.getAttribute('data-category'));
+            }
+        });
+
+        whatsappCheckoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerObs = document.getElementById('customerObs').value.trim();
+
+            if (!customerName) {
+                alert("Por favor ingresa tu nombre o comercio.");
+                document.getElementById('customerName').focus();
+                return;
+            }
+
+            let message = `¡Hola YAKU! 🌿 Me gustaría realizar el siguiente pedido:\n\n`;
+            message += `👤 *Cliente:* ${customerName}\n`;
+            if (customerObs) {
+                message += `📝 *Observaciones:* ${customerObs}\n`;
+            }
+            message += `\n*DETALLE DEL PEDIDO:*\n`;
+
+            let totalOrder = 0;
+            cart.forEach((item, idx) => {
+                const subtotal = item.price * item.quantity;
+                totalOrder += subtotal;
+                message += `${idx + 1}. ${item.nombre} (${item.weight}) x ${item.quantity} - Subtotal: $${subtotal.toLocaleString()}\n`;
+            });
+
+            message += `\n💰 *TOTAL A PAGAR: $${totalOrder.toLocaleString()}*\n\n¡Espero su confirmación, gracias!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/542477510218?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        renderProducts('todos');
+    </script>
+</body>
+</html>
