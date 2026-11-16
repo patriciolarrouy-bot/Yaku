@@ -3,442 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YAKU - Alimentos Saludables | Tienda Online</title>
+    <title>YAKU - Productos Naturales</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <!-- Encabezado -->
     <header class="header">
-        <div class="container header-content">
-            <a href="#" class="logo-container">
-                <img src="logo-yaku.png" alt="YAKU Alimentos Saludables" class="logo-img">
-            </a>
-
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-                ☰
-            </button>
-
-            <nav class="nav-menu" id="nav-menu">
-                <ul>
-                    <li><a href="#catalogo" class="filter-btn active" data-category="all">Todos</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Frutos-Secos">Frutos Secos</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Mixes">Mixes</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Cereales">Cereales</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Condimentos">Condimentos</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Harinas">Harinas</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Semillas">Semillas</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Suplementos">Suplementos</a></li>
-                    <li><a href="#catalogo" class="filter-btn" data-category="Otros">Otros</a></li>
-                </ul>
-            </nav>
-
-            <button class="cart-btn" id="open-cart-btn">
-                🛒 <span class="cart-text">Mi Pedido</span> (<span id="cart-count">0</span>)
-            </button>
+        <div class="container nav-container">
+            <div class="logo-container">
+                <img src="logo-yaku.png" alt="YAKU Logo" class="logo-img" onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?w=150'">
+                <span class="logo-text">YAKU</span>
+            </div>
+            <div class="cart-btn" id="cartToggleBtn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
         </div>
     </header>
 
-    <!-- BANNER PRINCIPAL -->
+    <!-- Banner Principal -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Lo mejor de la naturaleza, en cada bocado</h1>
-            <p>100% Natural • Sin Conservantes • Venta Minorista y Mayorista</p>
-            <a href="#catalogo" class="btn-primary">Explorar Catálogo</a>
+            <h1>Aliméntate bien, vive mejor</h1>
+            <p>Descubre nuestra selección de productos naturales, frutos secos, semillas y suplementos de la mejor calidad para tu bienestar.</p>
         </div>
     </section>
 
-    <!-- CATÁLOGO DE PRODUCTOS -->
-    <main class="container main-section" id="catalogo">
-        <div class="section-header">
-            <h2 id="category-title">Catálogo de Productos</h2>
-            <p>Seleccioná el volumen (1 Kg, 500 g o 250 g), la cantidad y armá tu pedido.</p>
+    <!-- Sección de Productos -->
+    <main class="container main-content">
+        <h2 class="section-title">Nuestro Catálogo</h2>
+        
+        <!-- Filtros de Categorías -->
+        <div class="filters-container" id="categoryFilters">
+            <button class="filter-btn active" data-category="todos">Todos</button>
+            <button class="filter-btn" data-category="Frutos-Secos">Frutos Secos</button>
+            <button class="filter-btn" data-category="Condimentos">Condimentos</button>
+            <button class="filter-btn" data-category="Cereales">Cereales</button>
+            <button class="filter-btn" data-category="Semillas">Semillas</button>
+            <button class="filter-btn" data-category="Harinas">Harinas</button>
+            <button class="filter-btn" data-category="Mixes">Mixes</button>
+            <button class="filter-btn" data-category="Suplementos">Suplementos</button>
+            <button class="filter-btn" data-category="Otros">Otros</button>
         </div>
 
-        <div class="products-grid" id="products-grid">
-            <!-- Cargado dinámicamente desde JS -->
+        <!-- Grilla de Productos -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Los productos se inyectan dinámicamente mediante JavaScript -->
         </div>
     </main>
 
-    <!-- CARRITO LATERAL -->
-    <div class="cart-overlay" id="cart-overlay"></div>
-    <aside class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h3>Tu Pedido YAKU</h3>
-            <button class="close-cart" id="close-cart-btn">✕</button>
-        </div>
-
-        <div class="cart-items" id="cart-items">
-            <p class="empty-msg">Tu carrito está vacío.</p>
-        </div>
-
-        <div class="cart-footer">
-            <div class="customer-info">
-                <label for="customer-name">Tu Nombre / Comercio:</label>
-                <input type="text" id="customer-name" placeholder="Ej: Juan Pérez o Dietética Sol">
-                
-                <label for="order-type">Modalidad:</label>
-                <select id="order-type">
-                    <option value="Minorista">Compra Minorista</option>
-                    <option value="Mayorista">Compra Mayorista (Comercios)</option>
-                </select>
+    <!-- Carrito de Compras Lateral / Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Pedido</h3>
+                <button class="close-cart" id="closeCartBtn">&times;</button>
             </div>
-
-            <div class="cart-total">
-                <span>Total estimado:</span>
-                <span id="cart-total-price">$0</span>
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Items del carrito -->
+                <p class="empty-cart-msg">Tu carrito está vacío</p>
             </div>
-
-            <button class="btn-whatsapp" id="send-whatsapp-btn">
-                📲 Enviar Pedido por WhatsApp
-            </button>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotalPrice">$0</span>
+                </div>
+                <div class="customer-info">
+                    <input type="text" id="customerName" placeholder="Tu Nombre / Comercio" class="form-input">
+                    <textarea id="customerObs" placeholder="Observaciones o dirección de entrega (opcional)" class="form-input" rows="2"></textarea>
+                </div>
+                <button class="whatsapp-checkout-btn" id="whatsappCheckoutBtn">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+            </div>
         </div>
-    </aside>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- Pie de página -->
     <footer class="footer">
-        <div class="container">
-            <p><strong>YAKU - Alimentos Saludables</strong></p>
-            <p>Ingredientes naturales, vida más sana • Envíos y distribución.</p>
-            <p class="copyright">© 2026 YAKU Alimentos Saludables. Todos los derechos reservados.</p>
+        <div class="container footer-content">
+            <p>&copy; 2026 YAKU Productos Naturales. Todos los derechos reservados.</p>
+            <p>Pedidos al WhatsApp: <a href="https://wa.me/542477510218" target="_blank">+54 2477 510218</a></p>
         </div>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT -->
+    <!-- Script de la Aplicación -->
     <script>
+        // Base de datos de productos adaptada al repositorio local y planilla oficial
         const productos = [
-            // Aceites y Otros
-            { id: 1, nombre: "aceite-de-almendras", categoria: "Otros", precio1kg: 0, precio500g: 0, precio250g: 0, imagen: "Aceite-de-almendras.jpg" },
-            { id: 2, nombre: "aceite-de-cannabis-30ml", categoria: "Otros", precio1kg: 15500, precio500g: 0, precio250g: 0, imagen: "Aceite-de-cannabis-30ml.jpeg" },
-            { id: 3, nombre: "aceite-de-coco-360cc-coconut", categoria: "Otros", precio1kg: 16700, precio500g: 0, precio250g: 0, imagen: "Aceite-de-coco-360cc-Coconut.jpeg" },
-            { id: 4, nombre: "aceite-de-oliva-500cc", categoria: "Otros", precio1kg: 10900, precio500g: 0, precio250g: 0, imagen: "Aceite-de-oliva-500cc.jpg" },
-            { id: 5, nombre: "aceite-de-oregano-30cc", categoria: "Otros", precio1kg: 11600, precio500g: 0, precio250g: 0, imagen: "Aceite-de-oregano-30cc.JPG" },
-            
-            // Condimentos
-            { id: 6, nombre: "ají-molido-puro", categoria: "Condimentos", precio1kg: 15500, precio500g: 9000, precio250g: 5200, imagen: "Ají-molido-puro.jpg" },
-            { id: 7, nombre: "ajo-en-polvo", categoria: "Condimentos", precio1kg: 14700, precio500g: 8500, precio250g: 4900, imagen: "Ajo-en-polvo.jpg" },
-            { id: 8, nombre: "albahaca", categoria: "Condimentos", precio1kg: 19800, precio500g: 11500, precio250g: 6700, imagen: "Albahaca.jpg" },
-            { id: 9, nombre: "anis-en-grano", categoria: "Condimentos", precio1kg: 25200, precio500g: 14600, precio250g: 8500, imagen: "Anis-en-grano .jpg" },
-            { id: 10, nombre: "canela-en-polvo", categoria: "Condimentos", precio1kg: 18200, precio500g: 10600, precio250g: 6100, imagen: "Canela-en-polvo.jpg" },
-            { id: 11, nombre: "cebolla-deshidratada", categoria: "Condimentos", precio1kg: 23100, precio500g: 13400, precio250g: 7800, imagen: "cebolla-deshidratada.jpg" },
-            { id: 12, nombre: "chimichurri", categoria: "Condimentos", precio1kg: 8400, precio500g: 4900, precio250g: 2800, imagen: "Chimichurri.jpg" },
-            { id: 13, nombre: "clavo-de-olor", categoria: "Condimentos", precio1kg: 9900, precio500g: 5700, precio250g: 3300, imagen: "Clavo-de-olor.jpg" },
-            { id: 14, nombre: "curry", categoria: "Condimentos", precio1kg: 11200, precio500g: 6500, precio250g: 3800, imagen: "Curry.jpg" },
-            { id: 15, nombre: "jengibre-en-polvo", categoria: "Condimentos", precio1kg: 15600, precio500g: 9000, precio250g: 5200, imagen: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=60" },
-            { id: 16, nombre: "orégano", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Orégano.jpg" },
-            { id: 17, nombre: "pimentón", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Pimentón.jpg" },
-            { id: 18, nombre: "pimienta-blanca-en-grano", categoria: "Condimentos", precio1kg: 59400, precio500g: 34500, precio250g: 20000, imagen: "Pimienta-blanca-en-grano.jpg" },
-            { id: 19, nombre: "pimienta-blanca-molida", categoria: "Condimentos", precio1kg: 19100, precio500g: 11100, precio250g: 6400, imagen: "Pimienta-blanca-molida.jpg" },
-            { id: 20, nombre: "pimienta-negra-molida", categoria: "Condimentos", precio1kg: 12900, precio500g: 7500, precio250g: 4400, imagen: "Pimienta-negra-molida.jpg" },
-            { id: 21, nombre: "provenzal", categoria: "Condimentos", precio1kg: 10600, precio500g: 6100, precio250g: 3500, imagen: "Provenzal.jpg" },
-
-            // Frutos Secos
-            { id: 22, nombre: "almendras-con-chocolate", categoria: "Frutos-Secos", precio1kg: 46300, precio500g: 26900, precio250g: 15600, imagen: "Almendras-con-chocolate.JPG" },
-            { id: 23, nombre: "almendras-premium", categoria: "Frutos-Secos", precio1kg: 38700, precio500g: 22400, precio250g: 13000, imagen: "Almendras-premium.JPG" },
-            { id: 24, nombre: "avellanas", categoria: "Frutos-Secos", precio1kg: 44000, precio500g: 25500, precio250g: 14800, imagen: "Avellanas.jpg" },
-            { id: 25, nombre: "castañas-cajú-saladas-y-tostadas", categoria: "Frutos-Secos", precio1kg: 25100, precio500g: 14600, precio250g: 8500, imagen: "Castañas-cajú-saladas-y-tostadas.jpeg" },
-            { id: 26, nombre: "castañas-para", categoria: "Frutos-Secos", precio1kg: 38000, precio500g: 22000, precio250g: 12800, imagen: "Castañas-Para.jpeg" },
-            { id: 27, nombre: "maní-con-sal", categoria: "Frutos-Secos", precio1kg: 4800, precio500g: 2800, precio250g: 1600, imagen: "Maní-con-sal.webp" },
-            { id: 28, nombre: "mani-en-vaina", categoria: "Frutos-Secos", precio1kg: 6100, precio500g: 3500, precio250g: 2000, imagen: "Mani-en-vaina.jpeg" },
-            { id: 29, nombre: "mani-sin-sal", categoria: "Frutos-Secos", precio1kg: 5300, precio500g: 3100, precio250g: 1800, imagen: "Mani-sin-sal.jpeg" },
-            { id: 30, nombre: "nueces-mariposa", categoria: "Frutos-Secos", precio1kg: 23700, precio500g: 13700, precio250g: 7900, imagen: "Nueces-mariposa.jpg" },
-            { id: 31, nombre: "pistaccio-pelado-natural", categoria: "Frutos-Secos", precio1kg: 10900, precio500g: 6300, precio250g: 3700, imagen: "Pistacho-pelado-natural.jpeg" },
-
-            // Cereales
-            { id: 32, nombre: "almohaditas-surtidas", categoria: "Cereales", precio1kg: 13100, precio500g: 7600, precio250g: 4400, imagen: "almohaditas-de-chocolate.JPG" },
-            { id: 33, nombre: "bolitas-de-chocolate", categoria: "Cereales", precio1kg: 12000, precio500g: 7000, precio250g: 4100, imagen: "bolitas-de-chocolate.jpg" },
-            { id: 34, nombre: "copos-de-maiz", categoria: "Cereales", precio1kg: 8500, precio500g: 4500, precio250g: 2400, imagen: "copos-de-maiz.JPG" },
-            { id: 35, nombre: "aritos-frutales", categoria: "Cereales", precio1kg: 9500, precio500g: 5000, precio250g: 2600, imagen: "aritos-frutales.JPG" },
-            { id: 36, nombre: "fibra", categoria: "Cereales", precio1kg: 11400, precio500g: 6600, precio250g: 3800, imagen: "fibra.jpg" },
-            { id: 37, nombre: "granola-premium", categoria: "Cereales", precio1kg: 6500, precio500g: 3800, precio250g: 2200, imagen: "granola-premium.png" },
-            { id: 38, nombre: "granola-tradicional", categoria: "Cereales", precio1kg: 6500, precio500g: 3800, precio250g: 2200, imagen: "granola-tradicional.jpg" },
-            { id: 39, nombre: "mix-de-cereales", categoria: "Cereales", precio1kg: 9300, precio500g: 5400, precio250g: 3100, imagen: "mix-de-cereales.jpg" },
-            { id: 40, nombre: "quinoa-inflada", categoria: "Cereales", precio1kg: 9800, precio500g: 5700, precio250g: 3300, imagen: "quinoa-inflada.JPG" },
-
-            // Mixes
-            { id: 41, nombre: "mix-cervecero", categoria: "Mixes", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "mix-cervecero-(maíz-frito,-maní-salado,-girasol,-zapallo,-mani-chino).jpg" },
-            { id: 42, nombre: "mix-clásico", categoria: "Mixes", precio1kg: 19900, precio500g: 11500, precio250g: 6700, imagen: "mix-clásico-(nueces,-almendras,-castañas,-mani-y-pasas-de-uva).jpg" },
-            { id: 43, nombre: "mix-económico", categoria: "Mixes", precio1kg: 11900, precio500g: 6900, precio250g: 4000, imagen: "mix-económico-(pasas,-mani,-nueces-y-almendras).jpg" },
-            { id: 44, nombre: "mixes", categoria: "Mixes", precio1kg: 15000, precio500g: 7800, precio250g: 4100, imagen: "Mixes.JPG" },
-            { id: 45, nombre: "mix-patagónico", categoria: "Mixes", precio1kg: 28200, precio500g: 16400, precio250g: 9500, imagen: "mix-patagónico-(nueces,-almendras,-castañas-y-arándanos).jpg" },
-            { id: 46, nombre: "mix-premium", categoria: "Mixes", precio1kg: 35700, precio500g: 20700, precio250g: 12000, imagen: "mix-premium-(nueces,-almendras,-castañas-y-avellanas).jpg" },
-            { id: 47, nombre: "mix-seco", categoria: "Mixes", precio1kg: 24200, precio500g: 14000, precio250g: 8100, imagen: "mix-seco-(nueces,-almendras-y-castañas-de-cajú).jpg" },
-            { id: 48, nombre: "mix-tropical", categoria: "Mixes", precio1kg: 18600, precio500g: 10800, precio250g: 6300, imagen: "mix-tropical-(nueces,-almendras,-banana,-maní-y-pasas-de-uva).jpg" },
-
-            // Harinas
-            { id: 49, nombre: "harina-de-algarroba-negra", categoria: "Harinas", precio1kg: 10400, precio500g: 6000, precio250g: 3500, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 50, nombre: "harina-de-almendra-sin-piel-100%-de-pureza", categoria: "Harinas", precio1kg: 44400, precio500g: 25800, precio250g: 15000, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 51, nombre: "harina-de-almendra-sin-piel-70%-de-pureza", categoria: "Harinas", precio1kg: 7300, precio500g: 4200, precio250g: 2400, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 52, nombre: "harina-de-arroz", categoria: "Harinas", precio1kg: 2300, precio500g: 1300, precio250g: 800, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 53, nombre: "harina-de-avena", categoria: "Harinas", precio1kg: 3500, precio500g: 2000, precio250g: 1200, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 54, nombre: "harina-de-coco", categoria: "Harinas", precio1kg: 9600, precio500g: 5600, precio250g: 3200, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 55, nombre: "harina-de-garbanzo", categoria: "Harinas", precio1kg: 2600, precio500g: 1500, precio250g: 900, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 56, nombre: "harina-de-soja", categoria: "Harinas", precio1kg: 2500, precio500g: 1500, precio250g: 900, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 57, nombre: "harina-integral-fina", categoria: "Harinas", precio1kg: 2100, precio500g: 1200, precio250g: 700, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-            { id: 58, nombre: "semolin", categoria: "Harinas", precio1kg: 4400, precio500g: 2600, precio250g: 1500, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
-
-            // Semillas
-            { id: 59, nombre: "amapola", categoria: "Semillas", precio1kg: 12000, precio500g: 7000, precio250g: 4000, imagen: "amapola.jpg" },
-            { id: 60, nombre: "girasol-peladas", categoria: "Semillas", precio1kg: 6100, precio500g: 3500, precio250g: 2000, imagen: "girasol.jpeg" },
-            { id: 61, nombre: "lino", categoria: "Semillas", precio1kg: 5400, precio500g: 3100, precio250g: 1800, imagen: "lino.JPG" },
-            { id: 62, nombre: "lino-dorado", categoria: "Semillas", precio1kg: 8900, precio500g: 5200, precio250g: 3000, imagen: "lino.JPG" },
-            { id: 63, nombre: "mix-de-semillas", categoria: "Semillas", precio1kg: 6400, precio500g: 3700, precio250g: 2100, imagen: "mix-de-semillas.jpg" },
-            { id: 64, nombre: "quinoa", categoria: "Semillas", precio1kg: 16400, precio500g: 9500, precio250g: 5500, imagen: "quinoa-inflada.JPG" },
-            { id: 65, nombre: "sésamo-blanco", categoria: "Semillas", precio1kg: 12000, precio500g: 7000, precio250g: 4100, imagen: "sésamo-blanco.JPG" },
-            { id: 66, nombre: "sésamo-integral", categoria: "Semillas", precio1kg: 3800, precio500g: 2200, precio250g: 1300, imagen: "sésamo-integral.jpg" },
-            { id: 67, nombre: "sésamo-negro", categoria: "Semillas", precio1kg: 25000, precio500g: 14500, precio250g: 8400, imagen: "sésamo-negro.jpeg" },
-            { id: 68, nombre: "zapallo", categoria: "Semillas", precio1kg: 18700, precio500g: 10800, precio250g: 6300, imagen: "zapallo.jpg" },
-
-            // Suplementos
-            { id: 69, nombre: "cartilago-de-tiburon-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Cartilago-de-tiburon-etiqueta.jpg" },
-            { id: 70, nombre: "colageno", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Colageno.jpg" },
-            { id: 71, nombre: "graviola-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Graviola-etiqueta.jpg" },
-            { id: 72, nombre: "harina-de-coca", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Harina-de-coca.jpg" },
-            { id: 73, nombre: "moringa", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Moringa.jpg" },
-            { id: 74, nombre: "spirulina", categoria: "Suplementos", precio1kg: 1200, precio500g: 0, precio250g: 0, imagen: "Spirulina.jpg" },
-
-            // Otros / Legumbres / Arroz
-            { id: 75, nombre: "arroz-basmati", categoria: "Otros", precio1kg: 11500, precio500g: 6700, precio250g: 3900, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
-            { id: 76, nombre: "arroz-integral", categoria: "Otros", precio1kg: 2900, precio500g: 1700, precio250g: 1000, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
-            { id: 77, nombre: "arroz-yamaní", categoria: "Otros", precio1kg: 3800, precio500g: 2200, precio250g: 1300, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
-            { id: 78, nombre: "arveja-partida", categoria: "Otros", precio1kg: 2800, precio500g: 1600, precio250g: 900, imagen: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=500&auto=format&fit=crop&q=60" },
-            { id: 79, nombre: "azúcar-mascabo", categoria: "Otros", precio1kg: 7900, precio500g: 4600, precio250g: 2700, imagen: "Azúcar-Mascabo.webp" },
-            { id: 80, nombre: "bicarbonato", categoria: "Otros", precio1kg: 3500, precio500g: 2000, precio250g: 1200, imagen: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=500&auto=format&fit=crop&q=60" },
-            { id: 81, nombre: "chips-banana", categoria: "Otros", precio1kg: 20100, precio500g: 11700, precio250g: 6800, imagen: "Chips-banana.jpeg" },
-            { id: 82, nombre: "chips-de-chocolate", categoria: "Otros", precio1kg: 14000, precio500g: 8100, precio250g: 4700, imagen: "Chips-de-Chocolate.webp" },
-            { id: 83, nombre: "ciruelas", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "Ciruelas .jpeg" },
-            { id: 84, nombre: "dátiles-argelia", categoria: "Otros", precio1kg: 9500, precio500g: 5500, precio250g: 3200, imagen: "Dátiles-argelia.JPG" },
-            { id: 85, nombre: "lenteja", categoria: "Otros", precio1kg: 3500, precio500g: 2000, precio250g: 1200, imagen: "lentejas.jpg" },
-            { id: 86, nombre: "lenteja-turca", categoria: "Otros", precio1kg: 10400, precio500g: 6000, precio250g: 3500, imagen: "lentejas.jpg" },
-            { id: 87, nombre: "maní-con-chocolate", categoria: "Otros", precio1kg: 24600, precio500g: 14300, precio250g: 8300, imagen: "Maní-con-chocolate.JPG" },
-            { id: 88, nombre: "nuevo-mix-pan-dulce", categoria: "Otros", precio1kg: 21500, precio500g: 12500, precio250g: 7300, imagen: "nuevo-mix-pan-dulce-(fruta-escurrida,-frutos-secos,-pasas-de-uva).jpeg" },
-            { id: 89, nombre: "nuez-con-cáscara", categoria: "Otros", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Nuez-con-cáscara.jpeg" },
-            { id: 90, nombre: "pasas-de-uva-flame-y-jumbo", categoria: "Otros", precio1kg: 7100, precio500g: 4100, precio250g: 2400, imagen: "Pasas-de-uva-flame-y-jumbo.jpeg" },
-            { id: 91, nombre: "pasas-rubias", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "Pasas rubias.jpeg" },
-            { id: 92, nombre: "sal-rosa-del-himalaya", categoria: "Otros", precio1kg: 3800, precio500g: 2200, precio250g: 1300, imagen: "https://images.unsplash.com/photo-1518110905587-dc8c5581373e?w=500&auto=format&fit=crop&q=60" },
-            { id: 93, nombre: "salvado-de-avena", categoria: "Otros", precio1kg: 4100, precio500g: 2400, precio250g: 1400, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
-            { id: 94, nombre: "soja-texturizada", categoria: "Otros", precio1kg: 4400, precio500g: 2600, precio250g: 1500, imagen: "soja-texturizada.JPG" },
-            { id: 95, nombre: "tomates-secos", categoria: "Otros", precio1kg: 22400, precio500g: 13000, precio250g: 7500, imagen: "Tomates-secos.jpeg" },
-            { id: 96, nombre: "tutucas", categoria: "Otros", precio1kg: 7800, precio500g: 4500, precio250g: 2600, imagen: "https://images.unsplash.com/photo-1584776296944-ab6fb5763d75?w=500&auto=format&fit=crop&q=60" }
-        ];
-
-        let carrito = [];
-
-        const productsGrid = document.getElementById('products-grid');
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartCount = document.getElementById('cart-count');
-        const cartTotalPrice = document.getElementById('cart-total-price');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const categoryTitle = document.getElementById('category-title');
-
-        function mostrarProductos(categoria = 'all') {
-            productsGrid.innerHTML = '';
-            const filtrados = categoria === 'all' 
-                ? productos 
-                : productos.filter(p => p.categoria.toLowerCase() === categoria.toLowerCase());
-
-            filtrados.forEach(prod => {
-                const nombreLimpio = prod.nombre.replace(/-/g, ' ');
-
-                const card = document.createElement('article');
-                card.className = 'product-card';
-                
-                // Si el producto no tiene precios fraccionados (ej. aceites o suplementos unitarios), ocultamos el selector o adaptamos
-                const tieneFraccion = prod.precio250g > 0;
-
-                card.innerHTML = `
-                    <div class="product-img-wrapper">
-                        <img src="${prod.imagen}" alt="${nombreLimpio}" onerror="this.src='logo-yaku.png'">
-                    </div>
-                    <div class="product-info">
-                        <h3>${nombreLimpio}</h3>
-                        <div class="volume-selector" style="${!tieneFraccion ? 'visibility:hidden;' : ''}">
-                            <label for="vol-${prod.id}">Volumen:</label>
-                            <select id="vol-${prod.id}" onchange="actualizarPrecioCard(${prod.id})">
-                                <option value="250g" selected>250 g</option>
-                                <option value="500g">500 g</option>
-                                <option value="1kg">1 Kg</option>
-                            </select>
-                        </div>
-                        <div class="product-bottom">
-                            <span class="price" id="precio-display-${prod.id}">$${(tieneFraccion ? prod.precio250g : prod.precio1kg).toLocaleString('es-AR')}</span>
-                            <button class="btn-add" onclick="agregarAlCarrito(${prod.id})">+ Agregar</button>
-                        </div>
-                    </div>
-                `;
-                productsGrid.appendChild(card);
-            });
-        }
-
-        function actualizarPrecioCard(id) {
-            const prod = productos.find(p => p.id === id);
-            const select = document.getElementById(`vol-${id}`);
-            const priceDisplay = document.getElementById(`precio-display-${id}`);
-
-            if (!select) return;
-            if (select.value === '250g') {
-                priceDisplay.textContent = `$${prod.precio250g.toLocaleString('es-AR')}`;
-            } else if (select.value === '500g') {
-                priceDisplay.textContent = `$${prod.precio500g.toLocaleString('es-AR')}`;
-            } else if (select.value === '1kg') {
-                priceDisplay.textContent = `$${prod.precio1kg.toLocaleString('es-AR')}`;
-            }
-        }
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const cat = btn.getAttribute('data-category');
-                categoryTitle.textContent = cat === 'all' ? 'Catálogo de Productos' : `Categoría: ${cat}`;
-                mostrarProductos(cat);
-
-                document.getElementById('nav-menu').classList.remove('open');
-            });
-        });
-
-        function agregarAlCarrito(id) {
-            const prod = productos.find(p => p.id === id);
-            const select = document.getElementById(`vol-${id}`);
-            const volumen = select ? select.value : '1kg';
-
-            let precioUnitario = prod.precio250g > 0 ? prod.precio250g : prod.precio1kg;
-            let etiquetaVol = prod.precio250g > 0 ? '250 g' : 'Unidad';
-
-            if (select) {
-                if (volumen === '500g') {
-                    precioUnitario = prod.precio500g;
-                    etiquetaVol = '500 g';
-                } else if (volumen === '1kg') {
-                    precioUnitario = prod.precio1kg;
-                    etiquetaVol = '1 Kg';
-                }
-            }
-
-            const nombreLimpio = prod.nombre.replace(/-/g, ' ');
-            const cartItemId = `${id}-${volumen}`;
-            const itemExistente = carrito.find(item => item.cartItemId === cartItemId);
-
-            if (itemExistente) {
-                itemExistente.cantidad++;
-            } else {
-                carrito.push({
-                    cartItemId,
-                    id: prod.id,
-                    nombre: nombreLimpio,
-                    volumen: etiquetaVol,
-                    precio: precioUnitario,
-                    cantidad: 1
-                });
-            }
-
-            actualizarCarrito();
-            abrirCarrito();
-        }
-
-        function cambiarCantidad(cartItemId, delta) {
-            const item = carrito.find(i => i.cartItemId === cartItemId);
-            if (!item) return;
-
-            item.cantidad += delta;
-            if (item.cantidad <= 0) {
-                carrito = carrito.filter(i => i.cartItemId !== cartItemId);
-            }
-            actualizarCarrito();
-        }
-
-        function actualizarCarrito() {
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-            let totalItems = 0;
-
-            if (carrito.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="empty-msg">Tu carrito está vacío. ¡Sumá productos naturales!</p>';
-            } else {
-                carrito.forEach(item => {
-                    const subtotal = item.precio * item.cantidad;
-                    total += subtotal;
-                    totalItems += item.cantidad;
-
-                    const itemEl = document.createElement('div');
-                    itemEl.className = 'cart-item';
-                    itemEl.innerHTML = `
-                        <div class="cart-item-details">
-                            <h4>${item.nombre} (${item.volumen})</h4>
-                            <span>$${item.precio.toLocaleString('es-AR')} c/u</span>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="cambiarCantidad('${item.cartItemId}', -1)">-</button>
-                            <span>${item.cantidad}</span>
-                            <button onclick="cambiarCantidad('${item.cartItemId}', 1)">+</button>
-                        </div>
-                    `;
-                    cartItemsContainer.appendChild(itemEl);
-                });
-            }
-
-            cartCount.textContent = totalItems;
-            cartTotalPrice.textContent = `$${total.toLocaleString('es-AR')}`;
-        }
-
-        const cartSidebar = document.getElementById('cart-sidebar');
-        const cartOverlay = document.getElementById('cart-overlay');
-
-        function abrirCarrito() {
-            cartSidebar.classList.add('active');
-            cartOverlay.classList.add('active');
-        }
-
-        function cerrarCarrito() {
-            cartSidebar.classList.remove('active');
-            cartOverlay.classList.remove('active');
-        }
-
-        document.getElementById('open-cart-btn').addEventListener('click', abrirCarrito);
-        document.getElementById('close-cart-btn').addEventListener('click', cerrarCarrito);
-        cartOverlay.addEventListener('click', cerrarCarrito);
-
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('nav-menu').classList.toggle('open');
-        });
-
-        // ENVIAR PEDIDO A WHATSAPP (+542477510218)
-        document.getElementById('send-whatsapp-btn').addEventListener('click', () => {
-            if (carrito.length === 0) {
-                alert('Por favor, agregá al menos un producto al carrito antes de enviar el pedido.');
-                return;
-            }
-
-            const nombreCliente = document.getElementById('customer-name').value.trim() || 'Cliente Web';
-            const modalidad = document.getElementById('order-type').value;
-            const telefonoDestino = '542477510218';
-
-            let mensaje = `🌿 *NUEVO PEDIDO - YAKU ALIMENTOS SALUDABLES* 🌿\n\n`;
-            mensaje += `👤 *Cliente:* ${nombreCliente}\n`;
-            mensaje += `📦 *Modalidad:* ${modalidad}\n\n`;
-            mensaje += `🛒 *Detalle del pedido:*\n`;
-
-            let totalGeneral = 0;
-            carrito.forEach(item => {
-                const subtotal = item.precio * item.cantidad;
-                totalGeneral += subtotal;
-                mensaje += `• ${item.cantidad}x ${item.nombre} (${item.volumen}) — $${subtotal.toLocaleString('es-AR')}\n`;
-            });
-
-            mensaje += `\n💰 *TOTAL ESTIMADO: $${totalGeneral.toLocaleString('es-AR')}*\n\n`;
-            mensaje += `¡Hola! Quisiera confirmar disponibilidad y coordinar la entrega de este pedido.`;
-
-            const urlWhatsApp = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
-        });
-
-        // Inicializar catálogo completo al cargar la página
-        mostrarProductos('all');
-    </script>
-</body>
-</html>
+            { id: 1, nombre: "Aceite de almendras", categoria: "Otros", p1kg: 0, p500: 0, p250: 0, unidadLabel: "Consultar", imagen: "aceite-de-almendras.jpg" },
+            { id: 2, nombre: "Aceite de cannabis 30ml", categoria: "Otros", p1kg: 15500, p500: 0, p250: 0, unidadLabel: "Frasco 30ml", imagen: "aceite-de-cannabis-30ml.jpg" },
+            { id: 3, nombre: "Aceite de coco 360cc", categoria: "Otros", p1kg: 16700, p500: 0, p250: 0, unidadLabel: "Frasco 360cc", imagen: "aceite-de-coco-360cc-Coconut.jpeg" },
+            { id: 4, nombre: "Aceite de oliva 500cc", categoria: "Otros", p1kg: 10900, p500: 0, p250: 0, unidadLabel: "Botella 500cc", imagen: "aceite-de-oliva-500cc.jpg" },
+            { id: 5, nombre: "Aceite de orégano 30cc", categoria: "Otros", p1kg: 11600, p500: 0, p250: 0, unidadLabel: "Frasco 30cc", imagen: "aceite-de-oregano-30cc.JPG" },
+            { id: 6, nombre: "Ají molido puro", categoria: "Condimentos", p1kg: 15500, p500: 9000, p250: 5200, imagen: "ají-molido-puro.jpg" },
+            { id: 7, nombre: "Ajo en polvo", categoria: "Condimentos", p1kg: 14700, p500: 8500, p250: 4900, imagen: "ajo-en-polvo.jpg" },
+            { id: 8, nombre: "Albahaca", categoria: "Condimentos", p1kg: 19800, p500: 11500, p250: 6700, imagen: "albahaca.jpg" },
+            { id: 9, nombre: "Almendras con chocolate", categoria: "Otros", p1kg: 46300, p500: 26900, p250: 15600, imagen: "almendras-con-chocolate.JPG" },
+            { id: 10, nombre: "Almendras premium", categoria: "Frutos-Secos", p1kg: 38700, p500: 22400, p250: 13000, imagen: "almendras-premium.JPG" },
+            { id: 11, nombre: "Almohaditas surtidas", categoria: "Cereales", p1kg: 13100, p500: 7600, p250: 4400, imagen: "almohaditas-de-chocolate.JPG" },
+            { id: 12, nombre: "Anís en grano", categoria: "Condimentos", p1kg: 25200, p500: 14600, p250: 8500, imagen: "anis-en-grano.jpg" },
+            { id: 13, nombre: "Arroz basmati", categoria: "Otros", p1kg: 11500, p500: 6700, p250: 3900, imagen: "arroz-basmati.jpg", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 14, nombre: "Arroz integral", categoria: "Otros", p1kg: 2900, p500: 1700, p250: 1000, imagen: "arroz-integral.jpg", fallbackImg: "https://images.unsplash.com/photo-1536304993881-ff6e9effa2a6?w=400" },
+            { id: 15, nombre: "Arroz yamaní", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "arroz-yamani.jpg", fallbackImg: "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400" },
+            { id: 16, nombre: "Arveja partida", categoria: "Otros", p1kg: 2800, p500: 1600, p250: 900, imagen: "arveja-partida.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 17, nombre: "Avellanas", categoria: "Frutos-Secos", p1kg: 44000, p500: 25500, p250: 14800, imagen: "avellanas.jpg" },
+            { id: 18, nombre: "Azúcar mascabo", categoria: "Otros", p1kg: 7900, p500: 4600, p250: 2700, imagen: "azúcar-mascabowebp" },
+            { id: 19, nombre: "Baño repostería semiamargo", categoria: "Otros", p1kg: 10100, p500: 0, p250: 0, unidadLabel: "Tableta 500g", imagen: "bano-reposteria.jpg", fallbackImg: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
+            { id: 20, nombre: "Bicarbonato", categoria: "Otros", p1kg: 3500, p500: 2000, p250: 1200, imagen: "bicarbonato.jpg", fallbackImg: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=400" },
+            { id: 21, nombre: "Bolitas de chocolate", categoria: "Cereales", p1kg: 12000, p500: 7000, p250: 4100, imagen: "bolitas-de-chocolate.jpg" },
+            { id: 22, nombre: "Canela en polvo", categoria: "Condimentos", p1kg: 18200, p500: 10600, p250: 6100, imagen: "canela-en-polvo.jpg" },
+            { id: 23, nombre: "Cartílago de tiburón", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Etiqueta", imagen: "cartilago-de-tiburon-etiqueta.jpg" },
+            { id: 24, nombre: "Castañas cajú saladas", categoria: "Frutos-Secos", p1kg: 25100, p500: 14600, p250: 8500, imagen: "castañas-cajú-saladas-y-tostadas.jpg" },
+            { id: 25, nombre: "Castañas Para", categoria: "Frutos-Secos", p1kg: 38000, p500: 22000, p250: 12800, imagen: "castañas-Para.jpeg" },
+            { id: 26, nombre: "Cebolla deshidratada", categoria: "Condimentos", p1kg: 23100, p500: 13400, p250: 7800, imagen: "cebolla-deshidratada.jpg" },
+            { id: 27, nombre: "Chimichurri", categoria: "Condimentos", p1kg: 8400, p500: 4900, p250: 2800, imagen: "chimichurri.jpg" },
+            { id: 28, nombre: "Chips banana", categoria: "Otros", p1kg: 20100, p500: 11700, p250: 6800, imagen: "chips-banana.jpeg" },
+            { id: 29, nombre: "Chips de chocolate", categoria: "Otros", p1kg: 14000, p500: 8100, p250: 4700, imagen: "chips-de-Chocolate.webp" },
+            { id: 30, nombre: "Ciruelas", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "ciruelas.jpeg" },
+            { id: 31, nombre: "Clavo de olor", categoria: "Condimentos", p1kg: 9900, p500: 5700, p250: 3300, imagen: "clavo-de-olor.jpg" },
+            { id: 32, nombre: "Colágeno", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "colageno.jpg" },
+            { id: 33, nombre: "Curry", categoria: "Condimentos", p1kg: 11200, p500: 6500, p250: 3800, imagen: "curry.jpg" },
+            { id: 34, nombre: "Dátiles argelia", categoria: "Otros", p1kg: 9500, p500: 5500, p250: 3200, imagen: "dátiles-argeliaJPG" },
+            { id: 35, nombre: "Esencia de vainilla", categoria: "Otros", p1kg: 2900, p500: 0, p250: 0, unidadLabel: "100cc", imagen: "esencia-vainilla.jpg", fallbackImg: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400" },
+            { id: 36, nombre: "Espirulina con maca", categoria: "Suplementos", p1kg: 1200, p500: 0, p250: 0, unidadLabel: "100g", imagen: "espirulina.jpg" },
+            { id: 37, nombre: "Fibra", categoria: "Cereales", p1kg: 11400, p500: 6600, p250: 3800, imagen: "fibra.jpg" },
+            { id: 38, nombre: "Flor de jamaica / hibiscus", categoria: "Otros", p1kg: 24400, p500: 14200, p250: 8200, imagen: "flor-jamaica.jpg", fallbackImg: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400" },
+            { id: 39, nombre: "Fruta escurrida pan dulce", categoria: "Otros", p1kg: 8400, p500: 4900, p250: 2800, imagen: "fruta-escurrida.jpg", fallbackImg: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400" },
+            { id: 40, nombre: "Gelatina sin sabor", categoria: "Otros", p1kg: 32700, p500: 19000, p250: 11000, imagen: "gelatina.jpg", fallbackImg: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=400" },
+            { id: 41, nombre: "Girasol peladas", categoria: "Semillas", p1kg: 6100, p500: 3500, p250: 2000, imagen: "girasol.jpeg" },
+            { id: 42, nombre: "Granola premium", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-premium.png" },
+            { id: 43, nombre: "Granola tradicional", categoria: "Cereales", p1kg: 6500, p500: 3800, p250: 2200, imagen: "granola-tradicional.jpg" },
+            { id: 44, nombre: "Graviola etiqueta", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "graviola-etiqueta.png" },
+            { id: 45, nombre: "Harina de algarroba negra", categoria: "Harinas", p1kg: 10400, p500: 6000, p250: 3500, imagen: "harina-de-algarroba.jpg", fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 46, nombre: "Harina de almendra 100%", categoria: "Harinas", p1kg: 44400, p500: 25800, p250: 15000, imagen: "harina-de-almendra.jpg" },
+            { id: 47, nombre: "Harina de arroz", categoria: "Harinas", p1kg: 2300, p500: 1300, p250: 800, imagen: "harina-de-arroz.jpg", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 48, nombre: "Harina de avena", categoria: "Harinas", p1kg: 3500, p500: 2000, p250: 1200, imagen: "harina-de-avena.jpg", fallbackImg: "https://images.unsplash.com/photo-1584776296944-ab6fb57a0abd?w=400" },
+            { id: 49, nombre: "Harina de coco", categoria: "Harinas", p1kg: 9600, p500: 5600, p250: 3200, imagen: "harina-de-coco.jpg", fallbackImg: "https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400" },
+            { id: 50, nombre: "Harina de garbanzo", categoria: "Harinas", p1kg: 2600, p500: 1500, p250: 900, imagen: "harina-de-garbanzo.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 51, nombre: "Harina de soja", categoria: "Harinas", p1kg: 2500, p500: 1500, p250: 900, imagen: "harina-de-soja.jpg" },
+            { id: 52, nombre: "Harina integral fina", categoria: "Harinas", p1kg: 2100, p500: 1200, p250: 700, imagen: "harina-integral.jpg", fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" },
+            { id: 53, nombre: "Jengibre en polvo", categoria: "Condimentos", p1kg: 15600, p500: 9000, p250: 5200, imagen: "jengibre.jpg", fallbackImg: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400" },
+            { id: 54, nombre: "Leche de almendras Biba", categoria: "Almendras", p1kg: 5300, p500: 0, p250: 0, unidadLabel: "Litro", imagen: "leche-almendras.jpg", fallbackImg: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400" },
+            { id: 55, nombre: "Lenteja", categoria: "Porotos-y-legumbres", p1kg: 3500, p500: 2000, p250: 1200, imagen: "lentejas.jpg" },
+            { id: 56, nombre: "Lentejas de chocolate", categoria: "Otros", p1kg: 22400, p500: 13000, p250: 7500, imagen: "lentejas-de-chocolate.jpg", fallbackImg: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400" },
+            { id: 57, nombre: "Lenteja turca", categoria: "Porotos-y-legumbres", p1kg: 10400, p500: 6000, p250: 3500, imagen: "lenteja-turca.jpg", fallbackImg: "https://images.unsplash.com/photo-1515543981174-84ff5d9e5b5e?w=400" },
+            { id: 58, nombre: "Lino", categoria: "Semillas", p1kg: 5400, p500: 3100, p250: 1800, imagen: "lino.JPG" },
+            { id: 59, nombre: "Lino dorado", categoria: "Semillas", p1kg: 8900, p500: 5200, p250: 3000, imagen: "lino-dorado.jpg", fallbackImg: "https://images.unsplash.com/photo-1585325701165-351af916e504?w=400" },
+            { id: 60, nombre: "Maní con chocolate", categoria: "Otros", p1kg: 24600, p500: 14300, p250: 8300, imagen: "maní-con-chocolate.png" },
+            { id: 61, nombre: "Maní con sal", categoria: "Frutos-Secos", p1kg: 4800, p500: 2800, p250: 1600, imagen: "maní-con-sal.webp" },
+            { id: 62, nombre: "Maní en vaina", categoria: "Frutos-Secos", p1kg: 6100, p500: 3500, p250: 2000, imagen: "mani-en-vainajpe" },
+            { id: 63, nombre: "Maní sin sal", categoria: "Frutos-Secos", p1kg: 5300, p500: 3100, p250: 1800, imagen: "mani-sin-sal.jpeg" },
+            { id: 64, nombre: "Mix cervecero", categoria: "Mixes", p1kg: 10000, p500: 5800, p250: 3400, imagen: "mix-cervecero.jpg" },
+            { id: 65, nombre: "Mix clásico", categoria: "Mixes", p1kg: 19900, p500: 11500, p250: 6700, imagen: "mix-clásico.jpg" },
+            { id: 66, nombre: "Mix de cereales", categoria: "Cereales", p1kg: 9300, p500: 5400, p250: 3100, imagen: "mix-de-cereales.jpg" },
+            { id: 67, nombre: "Mix de semillas", categoria: "Semillas", p1kg: 6400, p500: 3700, p250: 2100, imagen: "mix-de-semillas.jpg" },
+            { id: 68, nombre: "Mix económico", categoria: "Mixes", p1kg: 11900, p500: 6900, p250: 4000, imagen: "mix-económico.jpg" },
+            { id: 69, nombre: "Mix patagónico", categoria: "Mixes", p1kg: 28200, p500: 16400, p250: 9500, imagen: "mix-patagónico.jpg" },
+            { id: 70, nombre: "Mix premium", categoria: "Mixes", p1kg: 35700, p500: 20700, p250: 12000, imagen: "mix-premium.jpg" },
+            { id: 71, nombre: "Mix seco", categoria: "Mixes", p1kg: 24200, p500: 14000, p250: 8100, imagen: "mix-seco.jpg" },
+            { id: 72, nombre: "Mix tropical", categoria: "Mixes", p1kg: 18600, p500: 10800, p250: 6300, imagen: "mix-tropical.jpg" },
+            { id: 73, nombre: "Moringa", categoria: "Suplementos", p1kg: 1400, p500: 0, p250: 0, unidadLabel: "Frasco", imagen: "moringa.png" },
+            { id: 74, nombre: "Nueces mariposa", categoria: "Frutos-Secos", p1kg: 23700, p500: 13700, p250: 7900, imagen: "nueces-mariposa.jpg" },
+            { id: 75, nombre: "Nuevo mix pan dulce", categoria: "Otros", p1kg: 21500, p500: 12500, p250: 7300, imagen: "nuevo-mix-pan-dulce.jpeg" },
+            { id: 76, nombre: "Nuez con cáscara", categoria: "Otros", p1kg: 10000, p500: 5800, p250: 3400, imagen: "nuez-con-cáscara.jpeg" },
+            { id: 77, nombre: "Orégano", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "orégano.jpg" },
+            { id: 78, nombre: "Pasas de uva flame y jumbo", categoria: "Otros", p1kg: 7100, p500: 4100, p250: 2400, imagen: "pasas-de-uva-flame-y-jumbo.jpg" },
+            { id: 79, nombre: "Pasas rubias", categoria: "Otros", p1kg: 13900, p500: 8100, p250: 4700, imagen: "pasas-rubias.jpg" },
+            { id: 80, nombre: "Pasta de maní c/stevia", categoria: "Maní", p1kg: 5000, p500: 0, p250: 0, unidadLabel: "Frasco 370g", imagen: "pasta-de-mani.jpg", fallbackImg: "https://images.unsplash.com/photo-1589734553451-f6e3c044234c?w=400" },
+            { id: 81, nombre: "Pimentón", categoria: "Condimentos", p1kg: 10000, p500: 5800, p250: 3400, imagen: "pimentón.jpg" },
+            { id: 82, nombre: "Pimienta blanca en grano", categoria: "Condimentos", p1kg: 59400, p500: 34500, p250: 20000, imagen: "pimienta-blanca-en-grano.jpg" },
+            { id: 83, nombre: "Pimienta blanca molida", categoria: "Condimentos", p1kg: 19100, p500: 11100, p250: 6400, imagen: "pimienta-blanca-molida.jpg" },
+            { id: 84, nombre: "Pimienta negra molida", categoria: "Condimentos", p1kg: 12900, p500: 7500, p250: 4400, imagen: "pimienta-negra-molida.jpg" },
+            { id: 85, nombre: "Pistacchio pelado natural", categoria: "Frutos-Secos", p1kg: 10900, p500: 6300, p250: 3700, imagen: "pistacho-pelado-natural.jpe" },
+            { id: 86, nombre: "Provenzal", categoria: "Condimentos", p1kg: 10600, p500: 6100, p250: 3500, imagen: "provenzal.jpg" },
+            { id: 87, nombre: "Quinoa", categoria: "Semillas", p1kg: 16400, p500: 9500, p250: 5500, imagen: "quinoa-inflada.JPG", fallbackImg: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+            { id: 88, nombre: "Quinoa inflada", categoria: "Cereales", p1kg: 9800, p500: 5700, p250: 3300, imagen: "quinoa-inflada.JPG" },
+            { id: 89, nombre: "Sal marina fina", categoria: "Otros", p1kg: 4000, p500: 0, p250: 0, unidadLabel: "Paquete 500g", imagen: "sal-marina.jpg", fallbackImg: "https://images.unsplash.com/photo-1518110905587-dc5f9f34fb32?w=400" },
+            { id: 90, nombre: "Sal rosa del himalaya", categoria: "Otros", p1kg: 3800, p500: 2200, p250: 1300, imagen: "sal-rosa.jpg",
