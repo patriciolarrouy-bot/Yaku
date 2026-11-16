@@ -111,41 +111,41 @@
     <script>
         const productos = [
             // Aceites y Otros
-            { id: 1, nombre: "aceite-de-almendras", categoria: "Otros", precio1kg: 0, precio500g: 0, precio250g: 0, imagen: "aceite-de-almendras.jpg"},
-            { id: 2, nombre: "aceite-de-cannabis-30ml", categoria: "Otros", precio1kg: 15500, precio500g: 0, precio250g: 0, imagen: "Aceite-de-cannabis-30ml.jpeg" },
-            { id: 3, nombre: "aceite-de-coco-360cc-coconut", categoria: "Otros", precio1kg: 16700, precio500g: 0, precio250g: 0, imagen: "Aceite-de-coco-360cc-Coconut.jpeg" },
-            { id: 4, nombre: "aceite-de-oliva-500cc", categoria: "Otros", precio1kg: 10900, precio500g: 0, precio250g: 0, imagen: "Aceite-de-oliva-500cc.jpg" },
-            { id: 5, nombre: "aceite-de-oregano-30cc", categoria: "Otros", precio1kg: 11600, precio500g: 0, precio250g: 0, imagen: "Aceite-de-oregano-30cc.JPG" },
+            { id: 1, nombre: "aceite-de-almendras", categoria: "Otros", precio1kg: 0, precio500g: 0, precio250g: 0, imagen: "aceite-de-almendras.jpg" },
+            { id: 2, nombre: "aceite-de-cannabis-30ml", categoria: "Otros", precio1kg: 15500, precio500g: 0, precio250g: 0, imagen: "aceite-de-cannabis-30ml.jpeg" },
+            { id: 3, nombre: "aceite-de-coco-360cc-coconut", categoria: "Otros", precio1kg: 16700, precio500g: 0, precio250g: 0, imagen: "aceite-de-coco-360cc-Coconut.jpeg" },
+            { id: 4, nombre: "aceite-de-oliva-500cc", categoria: "Otros", precio1kg: 10900, precio500g: 0, precio250g: 0, imagen: "aceite-de-oliva-500cc.jpg" },
+            { id: 5, nombre: "aceite-de-oregano-30cc", categoria: "Otros", precio1kg: 11600, precio500g: 0, precio250g: 0, imagen: "aceite-de-oregano-30cc.JPG" },
             
             // Condimentos
-            { id: 6, nombre: "ají-molido-puro", categoria: "Condimentos", precio1kg: 15500, precio500g: 9000, precio250g: 5200, imagen: "Ají-molido-puro.jpg" },
-            { id: 7, nombre: "ajo-en-polvo", categoria: "Condimentos", precio1kg: 14700, precio500g: 8500, precio250g: 4900, imagen: "Ajo-en-polvo.jpg" },
-            { id: 8, nombre: "albahaca", categoria: "Condimentos", precio1kg: 19800, precio500g: 11500, precio250g: 6700, imagen: "Albahaca.jpg" },
-            { id: 9, nombre: "anis-en-grano", categoria: "Condimentos", precio1kg: 25200, precio500g: 14600, precio250g: 8500, imagen: "Anis-en-grano .jpg" },
-            { id: 10, nombre: "canela-en-polvo", categoria: "Condimentos", precio1kg: 18200, precio500g: 10600, precio250g: 6100, imagen: "Canela-en-polvo.jpg" },
+            { id: 6, nombre: "ají-molido-puro", categoria: "Condimentos", precio1kg: 15500, precio500g: 9000, precio250g: 5200, imagen: "ají-molido-puro.jpg" },
+            { id: 7, nombre: "ajo-en-polvo", categoria: "Condimentos", precio1kg: 14700, precio500g: 8500, precio250g: 4900, imagen: "ajo-en-polvo.jpg" },
+            { id: 8, nombre: "albahaca", categoria: "Condimentos", precio1kg: 19800, precio500g: 11500, precio250g: 6700, imagen: "albahaca.jpg" },
+            { id: 9, nombre: "anis-en-grano", categoria: "Condimentos", precio1kg: 25200, precio500g: 14600, precio250g: 8500, imagen: "anis-en-grano .jpg" },
+            { id: 10, nombre: "canela-en-polvo", categoria: "Condimentos", precio1kg: 18200, precio500g: 10600, precio250g: 6100, imagen: "canela-en-polvo.jpg" },
             { id: 11, nombre: "cebolla-deshidratada", categoria: "Condimentos", precio1kg: 23100, precio500g: 13400, precio250g: 7800, imagen: "cebolla-deshidratada.jpg" },
-            { id: 12, nombre: "chimichurri", categoria: "Condimentos", precio1kg: 8400, precio500g: 4900, precio250g: 2800, imagen: "Chimichurri.jpg" },
-            { id: 13, nombre: "clavo-de-olor", categoria: "Condimentos", precio1kg: 9900, precio500g: 5700, precio250g: 3300, imagen: "Clavo-de-olor.jpg" },
-            { id: 14, nombre: "curry", categoria: "Condimentos", precio1kg: 11200, precio500g: 6500, precio250g: 3800, imagen: "Curry.jpg" },
+            { id: 12, nombre: "chimichurri", categoria: "Condimentos", precio1kg: 8400, precio500g: 4900, precio250g: 2800, imagen: "chimichurri.jpg" },
+            { id: 13, nombre: "clavo-de-olor", categoria: "Condimentos", precio1kg: 9900, precio500g: 5700, precio250g: 3300, imagen: "clavo-de-olor.jpg" },
+            { id: 14, nombre: "curry", categoria: "Condimentos", precio1kg: 11200, precio500g: 6500, precio250g: 3800, imagen: "curry.jpg" },
             { id: 15, nombre: "jengibre-en-polvo", categoria: "Condimentos", precio1kg: 15600, precio500g: 9000, precio250g: 5200, imagen: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=60" },
-            { id: 16, nombre: "orégano", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Orégano.jpg" },
-            { id: 17, nombre: "pimentón", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Pimentón.jpg" },
-            { id: 18, nombre: "pimienta-blanca-en-grano", categoria: "Condimentos", precio1kg: 59400, precio500g: 34500, precio250g: 20000, imagen: "Pimienta-blanca-en-grano.jpg" },
-            { id: 19, nombre: "pimienta-blanca-molida", categoria: "Condimentos", precio1kg: 19100, precio500g: 11100, precio250g: 6400, imagen: "Pimienta-blanca-molida.jpg" },
-            { id: 20, nombre: "pimienta-negra-molida", categoria: "Condimentos", precio1kg: 12900, precio500g: 7500, precio250g: 4400, imagen: "Pimienta-negra-molida.jpg" },
-            { id: 21, nombre: "provenzal", categoria: "Condimentos", precio1kg: 10600, precio500g: 6100, precio250g: 3500, imagen: "Provenzal.jpg" },
+            { id: 16, nombre: "orégano", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "orégano.jpg" },
+            { id: 17, nombre: "pimentón", categoria: "Condimentos", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "pimentón.jpg" },
+            { id: 18, nombre: "pimienta-blanca-en-grano", categoria: "Condimentos", precio1kg: 59400, precio500g: 34500, precio250g: 20000, imagen: "pimienta-blanca-en-grano.jpg" },
+            { id: 19, nombre: "pimienta-blanca-molida", categoria: "Condimentos", precio1kg: 19100, precio500g: 11100, precio250g: 6400, imagen: "pimienta-blanca-molida.jpg" },
+            { id: 20, nombre: "pimienta-negra-molida", categoria: "Condimentos", precio1kg: 12900, precio500g: 7500, precio250g: 4400, imagen: "pimienta-negra-molida.jpg" },
+            { id: 21, nombre: "provenzal", categoria: "Condimentos", precio1kg: 10600, precio500g: 6100, precio250g: 3500, imagen: "provenzal.jpg" },
 
             // Frutos Secos
-            { id: 22, nombre: "almendras-con-chocolate", categoria: "Frutos-Secos", precio1kg: 46300, precio500g: 26900, precio250g: 15600, imagen: "Almendras-con-chocolate.JPG" },
-            { id: 23, nombre: "almendras-premium", categoria: "Frutos-Secos", precio1kg: 38700, precio500g: 22400, precio250g: 13000, imagen: "Almendras-premium.JPG" },
-            { id: 24, nombre: "avellanas", categoria: "Frutos-Secos", precio1kg: 44000, precio500g: 25500, precio250g: 14800, imagen: "Avellanas.jpg" },
-            { id: 25, nombre: "castañas-cajú-saladas-y-tostadas", categoria: "Frutos-Secos", precio1kg: 25100, precio500g: 14600, precio250g: 8500, imagen: "Castañas-cajú-saladas-y-tostadas.jpeg" },
-            { id: 26, nombre: "castañas-para", categoria: "Frutos-Secos", precio1kg: 38000, precio500g: 22000, precio250g: 12800, imagen: "Castañas-Para.jpeg" },
-            { id: 27, nombre: "maní-con-sal", categoria: "Frutos-Secos", precio1kg: 4800, precio500g: 2800, precio250g: 1600, imagen: "Maní-con-sal.webp" },
-            { id: 28, nombre: "mani-en-vaina", categoria: "Frutos-Secos", precio1kg: 6100, precio500g: 3500, precio250g: 2000, imagen: "Mani-en-vaina.jpeg" },
-            { id: 29, nombre: "mani-sin-sal", categoria: "Frutos-Secos", precio1kg: 5300, precio500g: 3100, precio250g: 1800, imagen: "Mani-sin-sal.jpeg" },
-            { id: 30, nombre: "nueces-mariposa", categoria: "Frutos-Secos", precio1kg: 23700, precio500g: 13700, precio250g: 7900, imagen: "Nueces-mariposa.jpg" },
-            { id: 31, nombre: "pistaccio-pelado-natural", categoria: "Frutos-Secos", precio1kg: 10900, precio500g: 6300, precio250g: 3700, imagen: "Pistacho-pelado-natural.jpeg" },
+            { id: 22, nombre: "almendras-con-chocolate", categoria: "Frutos-Secos", precio1kg: 46300, precio500g: 26900, precio250g: 15600, imagen: "almendras-con-chocolate.JPG" },
+            { id: 23, nombre: "almendras-premium", categoria: "Frutos-Secos", precio1kg: 38700, precio500g: 22400, precio250g: 13000, imagen: "almendras-premium.JPG" },
+            { id: 24, nombre: "avellanas", categoria: "Frutos-Secos", precio1kg: 44000, precio500g: 25500, precio250g: 14800, imagen: "avellanas.jpg" },
+            { id: 25, nombre: "castañas-cajú-saladas-y-tostadas", categoria: "Frutos-Secos", precio1kg: 25100, precio500g: 14600, precio250g: 8500, imagen: "castañas-cajú-saladas-y-tostadas.jpeg" },
+            { id: 26, nombre: "castañas-para", categoria: "Frutos-Secos", precio1kg: 38000, precio500g: 22000, precio250g: 12800, imagen: "castañas-Para.jpeg" },
+            { id: 27, nombre: "maní-con-sal", categoria: "Frutos-Secos", precio1kg: 4800, precio500g: 2800, precio250g: 1600, imagen: "maní-con-sal.webp" },
+            { id: 28, nombre: "mani-en-vaina", categoria: "Frutos-Secos", precio1kg: 6100, precio500g: 3500, precio250g: 2000, imagen: "mani-en-vaina.jpeg" },
+            { id: 29, nombre: "mani-sin-sal", categoria: "Frutos-Secos", precio1kg: 5300, precio500g: 3100, precio250g: 1800, imagen: "mani-sin-sal.jpeg" },
+            { id: 30, nombre: "nueces-mariposa", categoria: "Frutos-Secos", precio1kg: 23700, precio500g: 13700, precio250g: 7900, imagen: "nueces-mariposa.jpg" },
+            { id: 31, nombre: "pistaccio-pelado-natural", categoria: "Frutos-Secos", precio1kg: 10900, precio500g: 6300, precio250g: 3700, imagen: "pistacho-pelado-natural.jpeg" },
 
             // Cereales
             { id: 32, nombre: "almohaditas-surtidas", categoria: "Cereales", precio1kg: 13100, precio500g: 7600, precio250g: 4400, imagen: "almohaditas-de-chocolate.JPG" },
@@ -159,14 +159,14 @@
             { id: 40, nombre: "quinoa-inflada", categoria: "Cereales", precio1kg: 9800, precio500g: 5700, precio250g: 3300, imagen: "quinoa-inflada.JPG" },
 
             // Mixes
-            { id: 41, nombre: "mix-cervecero", categoria: "Mixes", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "mix-cervecero-(maíz-frito,-maní-salado,-girasol,-zapallo,-mani-chino).jpg" },
-            { id: 42, nombre: "mix-clásico", categoria: "Mixes", precio1kg: 19900, precio500g: 11500, precio250g: 6700, imagen: "mix-clásico-(nueces,-almendras,-castañas,-mani-y-pasas-de-uva).jpg" },
-            { id: 43, nombre: "mix-económico", categoria: "Mixes", precio1kg: 11900, precio500g: 6900, precio250g: 4000, imagen: "mix-económico-(pasas,-mani,-nueces-y-almendras).jpg" },
-            { id: 44, nombre: "mixes", categoria: "Mixes", precio1kg: 15000, precio500g: 7800, precio250g: 4100, imagen: "Mixes.JPG" },
-            { id: 45, nombre: "mix-patagónico", categoria: "Mixes", precio1kg: 28200, precio500g: 16400, precio250g: 9500, imagen: "mix-patagónico-(nueces,-almendras,-castañas-y-arándanos).jpg" },
-            { id: 46, nombre: "mix-premium", categoria: "Mixes", precio1kg: 35700, precio500g: 20700, precio250g: 12000, imagen: "mix-premium-(nueces,-almendras,-castañas-y-avellanas).jpg" },
-            { id: 47, nombre: "mix-seco", categoria: "Mixes", precio1kg: 24200, precio500g: 14000, precio250g: 8100, imagen: "mix-seco-(nueces,-almendras-y-castañas-de-cajú).jpg" },
-            { id: 48, nombre: "mix-tropical", categoria: "Mixes", precio1kg: 18600, precio500g: 10800, precio250g: 6300, imagen: "mix-tropical-(nueces,-almendras,-banana,-maní-y-pasas-de-uva).jpg" },
+            { id: 41, nombre: "mix-cervecero", categoria: "Mixes", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "mix-cervecero.jpg" },
+            { id: 42, nombre: "mix-clásico", categoria: "Mixes", precio1kg: 19900, precio500g: 11500, precio250g: 6700, imagen: "mix-clásico.jpg" },
+            { id: 43, nombre: "mix-económico", categoria: "Mixes", precio1kg: 11900, precio500g: 6900, precio250g: 4000, imagen: "mix-económico.jpg" },
+            { id: 44, nombre: "mixes", categoria: "Mixes", precio1kg: 15000, precio500g: 7800, precio250g: 4100, imagen: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=500&auto=format&fit=crop&q=60" },
+            { id: 45, nombre: "mix-patagónico", categoria: "Mixes", precio1kg: 28200, precio500g: 16400, precio250g: 9500, imagen: "mix-patagónico.jpg" },
+            { id: 46, nombre: "mix-premium", categoria: "Mixes", precio1kg: 35700, precio500g: 20700, precio250g: 12000, imagen: "mix-premium.jpg" },
+            { id: 47, nombre: "mix-seco", categoria: "Mixes", precio1kg: 24200, precio500g: 14000, precio250g: 8100, imagen: "mix-seco.jpg" },
+            { id: 48, nombre: "mix-tropical", categoria: "Mixes", precio1kg: 18600, precio500g: 10800, precio250g: 6300, imagen: "mix-tropical.jpg" },
 
             // Harinas
             { id: 49, nombre: "harina-de-algarroba-negra", categoria: "Harinas", precio1kg: 10400, precio500g: 6000, precio250g: 3500, imagen: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60" },
@@ -193,35 +193,35 @@
             { id: 68, nombre: "zapallo", categoria: "Semillas", precio1kg: 18700, precio500g: 10800, precio250g: 6300, imagen: "zapallo.jpg" },
 
             // Suplementos
-            { id: 69, nombre: "cartilago-de-tiburon-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Cartilago-de-tiburon-etiqueta.jpg" },
-            { id: 70, nombre: "colageno", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Colageno.jpg" },
-            { id: 71, nombre: "graviola-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Graviola-etiqueta.jpg" },
-            { id: 72, nombre: "harina-de-coca", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Harina-de-coca.jpg" },
-            { id: 73, nombre: "moringa", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "Moringa.jpg" },
-            { id: 74, nombre: "spirulina", categoria: "Suplementos", precio1kg: 1200, precio500g: 0, precio250g: 0, imagen: "Spirulina.jpg" },
+            { id: 69, nombre: "cartilago-de-tiburon-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "cartilago-de-tiburon-etiqueta.jpg" },
+            { id: 70, nombre: "colageno", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "colageno.jpg" },
+            { id: 71, nombre: "graviola-etiqueta", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "graviola-etiqueta.jpg" },
+            { id: 72, nombre: "harina-de-coca", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "harina-de-coca.jpg" },
+            { id: 73, nombre: "moringa", categoria: "Suplementos", precio1kg: 1400, precio500g: 0, precio250g: 0, imagen: "moringa.jpg" },
+            { id: 74, nombre: "spirulina", categoria: "Suplementos", precio1kg: 1200, precio500g: 0, precio250g: 0, imagen: "epirulina.jpg" },
 
             // Otros / Legumbres / Arroz
             { id: 75, nombre: "arroz-basmati", categoria: "Otros", precio1kg: 11500, precio500g: 6700, precio250g: 3900, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
             { id: 76, nombre: "arroz-integral", categoria: "Otros", precio1kg: 2900, precio500g: 1700, precio250g: 1000, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
             { id: 77, nombre: "arroz-yamaní", categoria: "Otros", precio1kg: 3800, precio500g: 2200, precio250g: 1300, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
             { id: 78, nombre: "arveja-partida", categoria: "Otros", precio1kg: 2800, precio500g: 1600, precio250g: 900, imagen: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=500&auto=format&fit=crop&q=60" },
-            { id: 79, nombre: "azúcar-mascabo", categoria: "Otros", precio1kg: 7900, precio500g: 4600, precio250g: 2700, imagen: "Azúcar-Mascabo.webp" },
+            { id: 79, nombre: "azúcar-mascabo", categoria: "Otros", precio1kg: 7900, precio500g: 4600, precio250g: 2700, imagen: "azúcar-mascabo.webp" },
             { id: 80, nombre: "bicarbonato", categoria: "Otros", precio1kg: 3500, precio500g: 2000, precio250g: 1200, imagen: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=500&auto=format&fit=crop&q=60" },
-            { id: 81, nombre: "chips-banana", categoria: "Otros", precio1kg: 20100, precio500g: 11700, precio250g: 6800, imagen: "Chips-banana.jpeg" },
-            { id: 82, nombre: "chips-de-chocolate", categoria: "Otros", precio1kg: 14000, precio500g: 8100, precio250g: 4700, imagen: "Chips-de-Chocolate.webp" },
-            { id: 83, nombre: "ciruelas", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "Ciruelas .jpeg" },
-            { id: 84, nombre: "dátiles-argelia", categoria: "Otros", precio1kg: 9500, precio500g: 5500, precio250g: 3200, imagen: "Dátiles-argelia.JPG" },
+            { id: 81, nombre: "chips-banana", categoria: "Otros", precio1kg: 20100, precio500g: 11700, precio250g: 6800, imagen: "chips-banana.jpeg" },
+            { id: 82, nombre: "chips-de-chocolate", categoria: "Otros", precio1kg: 14000, precio500g: 8100, precio250g: 4700, imagen: "chips-de-Chocolate.webp" },
+            { id: 83, nombre: "ciruelas", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "ciruelas.jpeg" },
+            { id: 84, nombre: "dátiles-argelia", categoria: "Otros", precio1kg: 9500, precio500g: 5500, precio250g: 3200, imagen: "dátiles-argelia.JPG" },
             { id: 85, nombre: "lenteja", categoria: "Otros", precio1kg: 3500, precio500g: 2000, precio250g: 1200, imagen: "lentejas.jpg" },
             { id: 86, nombre: "lenteja-turca", categoria: "Otros", precio1kg: 10400, precio500g: 6000, precio250g: 3500, imagen: "lentejas.jpg" },
-            { id: 87, nombre: "maní-con-chocolate", categoria: "Otros", precio1kg: 24600, precio500g: 14300, precio250g: 8300, imagen: "Maní-con-chocolate.JPG" },
-            { id: 88, nombre: "nuevo-mix-pan-dulce", categoria: "Otros", precio1kg: 21500, precio500g: 12500, precio250g: 7300, imagen: "nuevo-mix-pan-dulce-(fruta-escurrida,-frutos-secos,-pasas-de-uva).jpeg" },
-            { id: 89, nombre: "nuez-con-cáscara", categoria: "Otros", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "Nuez-con-cáscara.jpeg" },
-            { id: 90, nombre: "pasas-de-uva-flame-y-jumbo", categoria: "Otros", precio1kg: 7100, precio500g: 4100, precio250g: 2400, imagen: "Pasas-de-uva-flame-y-jumbo.jpeg" },
-            { id: 91, nombre: "pasas-rubias", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "Pasas rubias.jpeg" },
+            { id: 87, nombre: "maní-con-chocolate", categoria: "Otros", precio1kg: 24600, precio500g: 14300, precio250g: 8300, imagen: "maní-con-chocolate.JPG" },
+            { id: 88, nombre: "nuevo-mix-pan-dulce", categoria: "Otros", precio1kg: 21500, precio500g: 12500, precio250g: 7300, imagen: "nuevo-mix-pan-dulce.jpeg" },
+            { id: 89, nombre: "nuez-con-cáscara", categoria: "Otros", precio1kg: 10000, precio500g: 5800, precio250g: 3400, imagen: "nuez-con-cáscara.jpeg" },
+            { id: 90, nombre: "pasas-de-uva-flame-y-jumbo", categoria: "Otros", precio1kg: 7100, precio500g: 4100, precio250g: 2400, imagen: "pasas-de-uva-flame-y-jumbo.jpeg" },
+            { id: 91, nombre: "pasas-rubias", categoria: "Otros", precio1kg: 13900, precio500g: 8100, precio250g: 4700, imagen: "pasas rubias.jpeg" },
             { id: 92, nombre: "sal-rosa-del-himalaya", categoria: "Otros", precio1kg: 3800, precio500g: 2200, precio250g: 1300, imagen: "https://images.unsplash.com/photo-1518110905587-dc8c5581373e?w=500&auto=format&fit=crop&q=60" },
             { id: 93, nombre: "salvado-de-avena", categoria: "Otros", precio1kg: 4100, precio500g: 2400, precio250g: 1400, imagen: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60" },
             { id: 94, nombre: "soja-texturizada", categoria: "Otros", precio1kg: 4400, precio500g: 2600, precio250g: 1500, imagen: "soja-texturizada.JPG" },
-            { id: 95, nombre: "tomates-secos", categoria: "Otros", precio1kg: 22400, precio500g: 13000, precio250g: 7500, imagen: "Tomates-secos.jpeg" },
+            { id: 95, nombre: "tomates-secos", categoria: "Otros", precio1kg: 22400, precio500g: 13000, precio250g: 7500, imagen: "tomates-secos.jpeg" },
             { id: 96, nombre: "tutucas", categoria: "Otros", precio1kg: 7800, precio500g: 4500, precio250g: 2600, imagen: "https://images.unsplash.com/photo-1584776296944-ab6fb5763d75?w=500&auto=format&fit=crop&q=60" }
         ];
 
@@ -234,6 +234,7 @@
         const filterBtns = document.querySelectorAll('.filter-btn');
         const categoryTitle = document.getElementById('category-title');
 
+        // ESTA ES "LA FÁBRICA" (Punto 2) QUE ARMA LAS TARJETAS Y CONECTA LAS IMÁGENES
         function mostrarProductos(categoria = 'all') {
             productsGrid.innerHTML = '';
             const filtrados = categoria === 'all' 
@@ -246,7 +247,6 @@
                 const card = document.createElement('article');
                 card.className = 'product-card';
                 
-                // Si el producto no tiene precios fraccionados (ej. aceites o suplementos unitarios), ocultamos el selector o adaptamos
                 const tieneFraccion = prod.precio250g > 0;
 
                 card.innerHTML = `
@@ -426,19 +426,4 @@
             let totalGeneral = 0;
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
-                totalGeneral += subtotal;
-                mensaje += `• ${item.cantidad}x ${item.nombre} (${item.volumen}) — $${subtotal.toLocaleString('es-AR')}\n`;
-            });
-
-            mensaje += `\n💰 *TOTAL ESTIMADO: $${totalGeneral.toLocaleString('es-AR')}*\n\n`;
-            mensaje += `¡Hola! Quisiera confirmar disponibilidad y coordinar la entrega de este pedido.`;
-
-            const urlWhatsApp = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
-        });
-
-        // Inicializar catálogo completo al cargar la página
-        mostrarProductos('all');
-    </script>
-</body>
-</html>
+                totalGeneral +=
