@@ -1,0 +1,744 @@
+[
+  {
+    "category": "Otros",
+    "name": "aceite-de-almendras",
+    "priceKg": null,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "aceite-de-cannabis-30ml",
+    "priceKg": 15500.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "aceite-de-coco-360cc-coconut",
+    "priceKg": 16700.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "aceite-de-oliva-500cc",
+    "priceKg": 10900.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "aceite-de-oregano-30cc",
+    "priceKg": 11600.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Condimentos",
+    "name": "ají-molido-puro",
+    "priceKg": 15500.0,
+    "price500": 9000.0,
+    "price250": 5200.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "ajo-en-polvo",
+    "priceKg": 14700.0,
+    "price500": 8500.0,
+    "price250": 4900.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "albahaca",
+    "priceKg": 19800.0,
+    "price500": 11500.0,
+    "price250": 6700.0
+  },
+  {
+    "category": "Otros",
+    "name": "almendras-con-chocolate",
+    "priceKg": 46300.0,
+    "price500": 26900.0,
+    "price250": 15600.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "almendras-premium",
+    "priceKg": 38700.0,
+    "price500": 22400.0,
+    "price250": 13000.0
+  },
+  {
+    "category": "Cereales",
+    "name": "almohaditas-surtidas-(¡incluye-todas!)",
+    "priceKg": 13100.0,
+    "price500": 7600.0,
+    "price250": 4400.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "anis-en-grano-",
+    "priceKg": 25200.0,
+    "price500": 14600.0,
+    "price250": 8500.0
+  },
+  {
+    "category": "Otros",
+    "name": "arroz-basmati",
+    "priceKg": 11500.0,
+    "price500": 6700.0,
+    "price250": 3900.0
+  },
+  {
+    "category": "Otros",
+    "name": "arroz-integral",
+    "priceKg": 2900.0,
+    "price500": 1700.0,
+    "price250": 1000.0
+  },
+  {
+    "category": "Otros",
+    "name": "arroz-yamaní",
+    "priceKg": 3800.0,
+    "price500": 2200.0,
+    "price250": 1300.0
+  },
+  {
+    "category": "Otros",
+    "name": "arveja-partida",
+    "priceKg": 2800.0,
+    "price500": 1600.0,
+    "price250": 900.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "avellanas",
+    "priceKg": 44000.0,
+    "price500": 25500.0,
+    "price250": 14800.0
+  },
+  {
+    "category": "Otros",
+    "name": "azúcar-mascabo",
+    "priceKg": 7900.0,
+    "price500": 4600.0,
+    "price250": 2700.0
+  },
+  {
+    "category": "Otros",
+    "name": "baño-de-reposteria-tableta-alpino-x500g-con-leche",
+    "priceKg": null,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "baño-de-reposteria-tableta-alpino-x500g-semiamargo",
+    "priceKg": 10100.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "bicarbonato",
+    "priceKg": 3500.0,
+    "price500": 2000.0,
+    "price250": 1200.0
+  },
+  {
+    "category": "Cereales",
+    "name": "bolitas-de-chocolate",
+    "priceKg": 12000.0,
+    "price500": 7000.0,
+    "price250": 4100.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "canela-en-polvo",
+    "priceKg": 18200.0,
+    "price500": 10600.0,
+    "price250": 6100.0
+  },
+  {
+    "category": "Suplementos",
+    "name": "cartilago-de-tiburon-etiqueta",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "castañas-cajú-saladas-y-tostadas",
+    "priceKg": 25100.0,
+    "price500": 14600.0,
+    "price250": 8500.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "castañas-para",
+    "priceKg": 38000.0,
+    "price500": 22000.0,
+    "price250": 12800.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "cebolla-deshidratada",
+    "priceKg": 23100.0,
+    "price500": 13400.0,
+    "price250": 7800.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "chimichurri",
+    "priceKg": 8400.0,
+    "price500": 4900.0,
+    "price250": 2800.0
+  },
+  {
+    "category": "Otros",
+    "name": "chips-banana",
+    "priceKg": 20100.0,
+    "price500": 11700.0,
+    "price250": 6800.0
+  },
+  {
+    "category": "Otros",
+    "name": "chips-de-chocolate",
+    "priceKg": 14000.0,
+    "price500": 8100.0,
+    "price250": 4700.0
+  },
+  {
+    "category": "Otros",
+    "name": "ciruelas-",
+    "priceKg": 13900.0,
+    "price500": 8100.0,
+    "price250": 4700.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "clavo-de-olor-(precios-x-100g/50g/25g)",
+    "priceKg": 9900.0,
+    "price500": 5700.0,
+    "price250": 3300.0
+  },
+  {
+    "category": "Suplementos",
+    "name": "colageno",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Condimentos",
+    "name": "curry",
+    "priceKg": 11200.0,
+    "price500": 6500.0,
+    "price250": 3800.0
+  },
+  {
+    "category": "Otros",
+    "name": "dátiles-argelia",
+    "priceKg": 9500.0,
+    "price500": 5500.0,
+    "price250": 3200.0
+  },
+  {
+    "category": "Otros",
+    "name": "esencia-de-vainilla-100cc-\"procal\"-(sin-tacc)",
+    "priceKg": 2900.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Suplementos",
+    "name": "espirulina-con-maca-(100g)-(sin-tacc)",
+    "priceKg": 1200.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Cereales",
+    "name": "fibra",
+    "priceKg": 11400.0,
+    "price500": 6600.0,
+    "price250": 3800.0
+  },
+  {
+    "category": "Otros",
+    "name": "flor-de-jamaica-/-hibiscus",
+    "priceKg": 24400.0,
+    "price500": 14200.0,
+    "price250": 8200.0
+  },
+  {
+    "category": "Otros",
+    "name": "fruta-escurrida-para-pan-dulce",
+    "priceKg": 8400.0,
+    "price500": 4900.0,
+    "price250": 2800.0
+  },
+  {
+    "category": "Otros",
+    "name": "gelatina-sin-sabor-(bovina)",
+    "priceKg": 32700.0,
+    "price500": 19000.0,
+    "price250": 11000.0
+  },
+  {
+    "category": "Semillas",
+    "name": "girasol-peladas",
+    "priceKg": 6100.0,
+    "price500": 3500.0,
+    "price250": 2000.0
+  },
+  {
+    "category": "Cereales",
+    "name": "granola-premium",
+    "priceKg": 6500.0,
+    "price500": 3800.0,
+    "price250": 2200.0
+  },
+  {
+    "category": "Cereales",
+    "name": "granola-tradicional",
+    "priceKg": 6500.0,
+    "price500": 3800.0,
+    "price250": 2200.0
+  },
+  {
+    "category": "Suplementos",
+    "name": "graviola-etiqueta",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-algarroba-negra",
+    "priceKg": 10400.0,
+    "price500": 6000.0,
+    "price250": 3500.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-almendra-sin-piel-100%-de-pureza",
+    "priceKg": 44400.0,
+    "price500": 25800.0,
+    "price250": 15000.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-almendra-sin-piel-70%-de-pureza",
+    "priceKg": 7300.0,
+    "price500": 4200.0,
+    "price250": 2400.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-arroz",
+    "priceKg": 2300.0,
+    "price500": 1300.0,
+    "price250": 800.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-avena",
+    "priceKg": 3500.0,
+    "price500": 2000.0,
+    "price250": 1200.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-centeno",
+    "priceKg": null,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Suplementos",
+    "name": "harina-de-coca",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Suplementos",
+    "name": "harina-de-coca-(100g)",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-coco",
+    "priceKg": 9600.0,
+    "price500": 5600.0,
+    "price250": 3200.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-garbanzo",
+    "priceKg": 2600.0,
+    "price500": 1500.0,
+    "price250": 900.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-de-soja",
+    "priceKg": 2500.0,
+    "price500": 1500.0,
+    "price250": 900.0
+  },
+  {
+    "category": "Harinas",
+    "name": "harina-integral-fina",
+    "priceKg": 2100.0,
+    "price500": 1200.0,
+    "price250": 700.0
+  },
+  {
+    "category": "Otros-Frutos-secos",
+    "name": "higos-negros",
+    "priceKg": null,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "hongos-bolletus",
+    "priceKg": null,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Condimentos",
+    "name": "jengibre-en-polvo",
+    "priceKg": 15600.0,
+    "price500": 9000.0,
+    "price250": 5200.0
+  },
+  {
+    "category": "Almendras",
+    "name": "leche-de-almendras-biba-1lt-(sin-tacc)",
+    "priceKg": 5300.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Porotos-y-legumbres",
+    "name": "lenteja",
+    "priceKg": 3500.0,
+    "price500": 2000.0,
+    "price250": 1200.0
+  },
+  {
+    "category": "Otros",
+    "name": "lentejas-de-chocolate-tipo-rocklets",
+    "priceKg": 22400.0,
+    "price500": 13000.0,
+    "price250": 7500.0
+  },
+  {
+    "category": "Porotos-y-legumbres",
+    "name": "lenteja-turca",
+    "priceKg": 10400.0,
+    "price500": 6000.0,
+    "price250": 3500.0
+  },
+  {
+    "category": "Semillas",
+    "name": "lino",
+    "priceKg": 5400.0,
+    "price500": 3100.0,
+    "price250": 1800.0
+  },
+  {
+    "category": "Semillas",
+    "name": "lino-dorado",
+    "priceKg": 8900.0,
+    "price500": 5200.0,
+    "price250": 3000.0
+  },
+  {
+    "category": "Otros",
+    "name": "maní-con-chocolate",
+    "priceKg": 24600.0,
+    "price500": 14300.0,
+    "price250": 8300.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "maní-con-sal",
+    "priceKg": 4800.0,
+    "price500": 2800.0,
+    "price250": 1600.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "mani-en-vaina",
+    "priceKg": 6100.0,
+    "price500": 3500.0,
+    "price250": 2000.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "mani-sin-sal",
+    "priceKg": 5300.0,
+    "price500": 3100.0,
+    "price250": 1800.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-cervecero-(maíz-frito,-maní-salado,-girasol,-zapallo,-mani-chino)",
+    "priceKg": 10000.0,
+    "price500": 5800.0,
+    "price250": 3400.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-clásico-(nueces,-almendras,-castañas,-mani-y-pasas-de-uva)",
+    "priceKg": 19900.0,
+    "price500": 11500.0,
+    "price250": 6700.0
+  },
+  {
+    "category": "Cereales",
+    "name": "mix-de-cereales",
+    "priceKg": 9300.0,
+    "price500": 5400.0,
+    "price250": 3100.0
+  },
+  {
+    "category": "Semillas",
+    "name": "mix-de-semillas",
+    "priceKg": 6400.0,
+    "price500": 3700.0,
+    "price250": 2100.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-económico-(pasas,-mani,-nueces-y-almendras)",
+    "priceKg": 11900.0,
+    "price500": 6900.0,
+    "price250": 4000.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-patagónico-(nueces,-almendras,-castañas-y-arándanos)",
+    "priceKg": 28200.0,
+    "price500": 16400.0,
+    "price250": 9500.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-premium-(nueces,-almendras,-castañas-y-avellanas)",
+    "priceKg": 35700.0,
+    "price500": 20700.0,
+    "price250": 12000.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-seco-(nueces,-almendras-y-castañas-de-cajú)",
+    "priceKg": 24200.0,
+    "price500": 14000.0,
+    "price250": 8100.0
+  },
+  {
+    "category": "Mixes",
+    "name": "mix-tropical-(nueces,-almendras,-banana,-maní-y-pasas-de-uva)",
+    "priceKg": 18600.0,
+    "price500": 10800.0,
+    "price250": 6300.0
+  },
+  {
+    "category": "Suplementos",
+    "name": "moringa",
+    "priceKg": 1400.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "nueces-mariposa",
+    "priceKg": 23700.0,
+    "price500": 13700.0,
+    "price250": 7900.0
+  },
+  {
+    "category": "Otros",
+    "name": "nuevo-mix-pan-dulce-(fruta-escurrida,-frutos-secos,-pasas-de-uva)",
+    "priceKg": 21500.0,
+    "price500": 12500.0,
+    "price250": 7300.0
+  },
+  {
+    "category": "Otros",
+    "name": "nuez-con-cáscara",
+    "priceKg": 10000.0,
+    "price500": 5800.0,
+    "price250": 3400.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "orégano",
+    "priceKg": 10000.0,
+    "price500": 5800.0,
+    "price250": 3400.0
+  },
+  {
+    "category": "Otros",
+    "name": "pasas-de-uva-flame-y-jumbo",
+    "priceKg": 7100.0,
+    "price500": 4100.0,
+    "price250": 2400.0
+  },
+  {
+    "category": "Otros",
+    "name": "pasas-rubias",
+    "priceKg": 13900.0,
+    "price500": 8100.0,
+    "price250": 4700.0
+  },
+  {
+    "category": "Maní",
+    "name": "pasta-de-maní-c/stevia-entrenuts-frasco-370g-(sin-tacc)",
+    "priceKg": 5000.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Condimentos",
+    "name": "pimentón",
+    "priceKg": 10000.0,
+    "price500": 5800.0,
+    "price250": 3400.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "pimienta-blanca-en-grano",
+    "priceKg": 59400.0,
+    "price500": 34500.0,
+    "price250": 20000.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "pimienta-blanca-molida",
+    "priceKg": 19100.0,
+    "price500": 11100.0,
+    "price250": 6400.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "pimienta-negra-molida",
+    "priceKg": 12900.0,
+    "price500": 7500.0,
+    "price250": 4400.0
+  },
+  {
+    "category": "Frutos-Secos",
+    "name": "pistaccio-pelado-natural-(precio-x-100g/50g/25g)",
+    "priceKg": 10900.0,
+    "price500": 6300.0,
+    "price250": 3700.0
+  },
+  {
+    "category": "Condimentos",
+    "name": "provenzal",
+    "priceKg": 10600.0,
+    "price500": 6100.0,
+    "price250": 3500.0
+  },
+  {
+    "category": "Semillas",
+    "name": "quinoa",
+    "priceKg": 16400.0,
+    "price500": 9500.0,
+    "price250": 5500.0
+  },
+  {
+    "category": "Cereales",
+    "name": "quinoa-inflada",
+    "priceKg": 9800.0,
+    "price500": 5700.0,
+    "price250": 3300.0
+  },
+  {
+    "category": "Otros",
+    "name": "sal-marina-fina-\"macrozen\"-(paquete-500g)-(sin-tacc)",
+    "priceKg": 4000.0,
+    "price500": null,
+    "price250": null
+  },
+  {
+    "category": "Otros",
+    "name": "sal-rosa-del-himalaya",
+    "priceKg": 3800.0,
+    "price500": 2200.0,
+    "price250": 1300.0
+  },
+  {
+    "category": "Otros",
+    "name": "salvado-de-avena",
+    "priceKg": 4100.0,
+    "price500": 2400.0,
+    "price250": 1400.0
+  },
+  {
+    "category": "Harinas",
+    "name": "semolin",
+    "priceKg": 4400.0,
+    "price500": 2600.0,
+    "price250": 1500.0
+  },
+  {
+    "category": "Semillas",
+    "name": "sésamo-blanco",
+    "priceKg": 12000.0,
+    "price500": 7000.0,
+    "price250": 4100.0
+  },
+  {
+    "category": "Semillas",
+    "name": "sésamo-integral",
+    "priceKg": 3800.0,
+    "price500": 2200.0,
+    "price250": 1300.0
+  },
+  {
+    "category": "Semillas",
+    "name": "sésamo-negro",
+    "priceKg": 25000.0,
+    "price500": 14500.0,
+    "price250": 8400.0
+  },
+  {
+    "category": "Porotos-y-legumbres",
+    "name": "soja-texturizada",
+    "priceKg": 4400.0,
+    "price500": 2600.0,
+    "price250": 1500.0
+  },
+  {
+    "category": "Otros",
+    "name": "tomates-secos",
+    "priceKg": 22400.0,
+    "price500": 13000.0,
+    "price250": 7500.0
+  },
+  {
+    "category": "Otros",
+    "name": "tutucas",
+    "priceKg": 7800.0,
+    "price500": 4500.0,
+    "price250": 2600.0
+  },
+  {
+    "category": "Semillas",
+    "name": "zapallo",
+    "priceKg": 18700.0,
+    "price500": 10800.0,
+    "price250": 6300.0
+  }
+]
