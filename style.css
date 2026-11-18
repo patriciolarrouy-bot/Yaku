@@ -100,7 +100,7 @@ body {
 }
 
 .hero {
-    background: linear-gradient(135deg, rgba(35, 77, 32, 0.95), rgba(74, 124, 68, 0.9));
+    background: linear-gradient(rgba(35, 77, 32, 0.85), rgba(35, 77, 32, 0.75)), url('logo-yaku.png') center/cover no-repeat;
     color: var(--color-white);
     text-align: center;
     padding: 60px 20px;
